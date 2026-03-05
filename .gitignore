@@ -13,7 +13,6 @@
 /.zed
 /auth.json
 /node_modules
-/public/build
 /public/hot
 /public/storage
 /storage/*.key
@@ -21,3 +20,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+
+public_html/advertising-mitramedia
+home/bprsmadi/public_html/advertising-mitramedia
