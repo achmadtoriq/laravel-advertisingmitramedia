@@ -159,18 +159,39 @@
         </div>
 
         <!-- Mobile Menu -->
+        <!-- Mobile Menu -->
         <div x-show="open" x-transition class="md:hidden bg-white shadow-lg">
 
             <div class="flex flex-col p-6 gap-4 font-bold text-black">
 
-                <a href="/">HOME</a>
-                <a href="/about">ABOUT</a>
-                <a href="/project">PROJECT</a>
-                <a href="/contact">CONTACT</a>
+                <a href="/"
+                    class="px-4 py-2 rounded-lg
+        {{ request()->is('/') ? 'bg-red-600 text-white' : '' }}">
+                    HOME
+                </a>
+
+                <a href="/about"
+                    class="px-4 py-2 rounded-lg
+        {{ request()->is('about-us') ? 'bg-red-600 text-white' : '' }}">
+                    ABOUT
+                </a>
+
+                <a href="/project"
+                    class="px-4 py-2 rounded-lg
+        {{ request()->is('project') ? 'bg-red-600 text-white' : '' }}">
+                    PROJECT
+                </a>
+
+                <a href="/contact"
+                    class="px-4 py-2 rounded-lg
+        {{ request()->is('contact-us') ? 'bg-red-600 text-white' : '' }}">
+                    CONTACT
+                </a>
 
                 <a href="#" class="bg-red-600 text-white px-4 py-2 rounded-full text-center">
                     HUBUNGI KAMI
                 </a>
+
                 <a href="#" class="flex items-center gap-1 text-red-600 justify-center">
                     <i class="fa-brands fa-instagram"></i> mitramedia.adv
                 </a>
@@ -227,8 +248,8 @@
 
                     <div class="flex gap-4">
                         <a href="#">
-                            <img class="w-8 hover:scale-110 transition" src="{{ asset('assets/square-facebook.svg') }}"
-                                alt="">
+                            <img class="w-8 hover:scale-110 transition"
+                                src="{{ asset('assets/square-facebook.svg') }}" alt="">
                         </a>
 
                         <a href="#">
