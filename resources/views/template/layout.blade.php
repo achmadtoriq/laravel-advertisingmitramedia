@@ -192,10 +192,15 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-sm">
 
                 <!-- Tagline -->
-                <div class="space-y-4">
-                    <h3 class="text-xl md:text-2xl font-extrabold">
+                <div class="flex flex-col items-center space-y-4">
+
+                    <img loading="lazy" decoding="async" class="h-10 transition-all duration-300"
+                        src="{{ asset('assets/images/mitramedia2.webp') }}" alt="Jasa Neon Box Surabaya">
+
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-300 text-center md:text-left">
                         Your Trust Ads Partner
                     </h3>
+
                 </div>
 
                 <!-- Produk -->
