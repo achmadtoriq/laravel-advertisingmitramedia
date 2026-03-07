@@ -1,59 +1,97 @@
-<section class="py-20 bg-gray-50 overflow-hidden">
+<section class="py-20 md:py-24 bg-gray-50 overflow-hidden">
 
     <div class="max-w-7xl mx-auto px-6 text-center">
 
-        <h2 class="text-3xl md:text-4xl font-bold">
-
+        <h2 class="text-2xl md:text-4xl font-bold">
             <span class="text-red-600">Partner</span> Kami
-
         </h2>
 
-        <p class="text-gray-500 mt-3">
+        <p class="text-gray-500 mt-2 md:mt-3 text-sm md:text-base">
             Perusahaan yang telah mempercayai layanan kami
         </p>
 
     </div>
 
 
-    <!-- LOGO SLIDER -->
-    <div class="relative mt-12 overflow-hidden">
+    <div x-data="logoSlider()" x-init="start()" class="relative mt-10 md:mt-16 overflow-hidden">
 
-        <div class="flex gap-16 items-center animate-[scroll_25s_linear_infinite] w-max">
+        <!-- gradient kiri -->
+        <div class="absolute left-0 top-0 w-16 md:w-40 h-full bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
 
-            <!-- LOGO -->
-            <img src="/assets/partner/aga.png"
-                class="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition">
+        <!-- gradient kanan -->
+        <div class="absolute right-0 top-0 w-16 md:w-40 h-full bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
 
-            <img src="/assets/partner/jnt.png"
-                class="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition">
 
-            <img src="/assets/partner/sharp.png"
-                class="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition">
+        <div class="flex">
 
-            <img src="/assets/partner/oppo.png"
-                class="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition">
+            <div x-ref="track" class="flex items-center gap-10 md:gap-20"
+                :style="'transform: translateX(-' + scroll + 'px)'" @mouseenter="pause=true" @mouseleave="pause=false">
 
-            <img src="/assets/partner/bankjatim.png"
-                class="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition">
+                <template x-for="logo in logos">
 
-            <!-- duplicate for smooth loop -->
-            <img src="/assets/partner/aga.png"
-                class="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition">
+                    <img :src="logo"
+                        class="h-6 md:h-10 lg:h-12
+    hover:scale-110
+    transition duration-500">
 
-            <img src="/assets/partner/jnt.png"
-                class="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition">
+                </template>
 
-            <img src="/assets/partner/sharp.png"
-                class="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition">
 
-            <img src="/assets/partner/oppo.png"
-                class="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition">
+                <!-- duplicate for infinite -->
+                <template x-for="logo in logos">
 
-            <img src="/assets/partner/bankjatim.png"
-                class="h-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition">
+                    <img :src="logo"
+                        class="h-6 md:h-10 lg:h-12
+    hover:scale-110
+    transition duration-500">
+
+                </template>
+
+            </div>
 
         </div>
 
     </div>
 
 </section>
+
+<script>
+    function logoSlider() {
+
+        return {
+
+            scroll: 0,
+            pause: false,
+
+            speed: window.innerWidth < 768 ? 0.15 : 0.35,
+
+            logos: [
+                "/assets/images/partner/logo-acer.webp",
+                "/assets/images/partner/logo-oppo.webp",
+                "/assets/images/partner/logo-sharp.webp",
+                "/assets/images/partner/logo-jnt.webp",
+                "/assets/images/partner/logo-bank-jatim.webp"
+            ],
+
+            start() {
+
+                setInterval(() => {
+
+                    if (!this.pause) {
+
+                        this.scroll += this.speed
+
+                        if (this.scroll >= this.$refs.track.scrollWidth / 2) {
+                            this.scroll = 0
+                        }
+
+                    }
+
+                }, 16)
+
+            }
+
+        }
+
+    }
+</script>
