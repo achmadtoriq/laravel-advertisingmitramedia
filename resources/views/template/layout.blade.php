@@ -311,6 +311,31 @@
 
     </footer>
 
+    <div class="fixed bottom-6 right-6 z-[9999] group">
+
+        <!-- Tooltip -->
+        <div
+            class="absolute bottom-20 right-0 bg-white shadow-xl rounded-xl px-4 py-2 text-sm text-gray-700 border 
+        opacity-0 translate-y-2 pointer-events-none
+        group-hover:opacity-100 group-hover:translate-y-0
+        transition duration-300 whitespace-nowrap">
+
+            Butuh bantuan? 💬
+
+        </div>
+
+        <!-- Button -->
+        <a href="https://wa.me/6282213280698" target="_blank"
+            class="relative flex items-center justify-center w-16 h-16 rounded-full bg-green-500 text-white shadow-2xl hover:scale-110 transition">
+
+            <span class="absolute w-full h-full rounded-full bg-green-400 opacity-30 animate-ping"></span>
+
+            <i class="fa-brands fa-whatsapp text-3xl relative"></i>
+
+        </a>
+
+    </div>
+
 </body>
 
 </html>
