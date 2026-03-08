@@ -2,6 +2,7 @@
     <x-hero></x-hero>
     <x-kenapa></x-kenapa>
     <x-layanan></x-layanan>
+    <x-portofolio></x-portofolio>
     <x-butuh></x-butuh>
     <x-maps></x-maps>
     <x-partner></x-partner>

@@ -66,6 +66,10 @@
         </script>
     @endverbatim
 
+    <!-- Fancybox -->
+    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" rel="stylesheet">
+
+
     <!-- Google Tag Manager Penting Jangan sampai Hilang -->
     <script>
         // (function(w, d, s, l, i) {
@@ -94,6 +98,10 @@
             style="display:none;visibility:hidden"></iframe></noscript> --}}
     <!-- End Google Tag Manager (noscript) -->
 
+    @php
+        $isHome = request()->is('/');
+    @endphp
+
     <header x-data="{ scrolled: false, open: false }" @scroll.window="scrolled = window.scrollY > 10"
         :class="scrolled ? 'bg-white shadow-lg' : 'bg-white md:bg-transparent md:backdrop-blur-md'"
         class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
@@ -105,7 +113,7 @@
                 :src="isMobile
                     ?
                     '{{ asset('assets/images/mitramedia.webp') }}' :
-                    (scrolled ?
+                    (scrolled || !{{ $isHome ? 'true' : 'false' }} ?
                         '{{ asset('assets/images/mitramedia.webp') }}' :
                         '{{ asset('assets/images/mitramedia2.webp') }}')"
                 alt="Jasa Neon Box Surabaya">
@@ -121,28 +129,28 @@
                 <a href="/"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
         {{ request()->is('/') ? 'bg-red-600 text-white' : '' }}"
-                    :class="scrolled ? 'text-black' : 'text-white'">
+                    :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     HOME
                 </a>
 
-                <a href="/about"
+                <a href="/about-us"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
-        {{ request()->is('about') ? 'bg-red-600 text-white' : '' }}"
-                    :class="scrolled ? 'text-black' : 'text-white'">
+        {{ request()->is('about-us') ? 'bg-red-600 text-white' : '' }}"
+                    :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     ABOUT
                 </a>
 
                 <a href="/project"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
         {{ request()->is('project') ? 'bg-red-600 text-white' : '' }}"
-                    :class="scrolled ? 'text-black' : 'text-white'">
+                    :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     PROJECT
                 </a>
 
-                <a href="/contact"
+                <a href="/contact-us"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
-        {{ request()->is('contact') ? 'bg-red-600 text-white' : '' }}"
-                    :class="scrolled ? 'text-black' : 'text-white'">
+        {{ request()->is('contact-us') ? 'bg-red-600 text-white' : '' }}"
+                    :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     CONTACT
                 </a>
 
@@ -170,7 +178,7 @@
                     HOME
                 </a>
 
-                <a href="/about"
+                <a href="/about-us"
                     class="px-4 py-2 rounded-lg
         {{ request()->is('about-us') ? 'bg-red-600 text-white' : '' }}">
                     ABOUT
@@ -182,7 +190,7 @@
                     PROJECT
                 </a>
 
-                <a href="/contact"
+                <a href="/contact-us"
                     class="px-4 py-2 rounded-lg
         {{ request()->is('contact-us') ? 'bg-red-600 text-white' : '' }}">
                     CONTACT
@@ -336,6 +344,7 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
 </body>
 
 </html>
