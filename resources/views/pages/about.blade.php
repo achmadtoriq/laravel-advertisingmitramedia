@@ -8,7 +8,8 @@
         <div class="max-w-7xl mx-auto px-6">
 
             <!-- Title -->
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                     Tentang <span class="text-red-600">Mitramedia Advertising</span>
                 </h2>
@@ -22,7 +23,7 @@
             <div class="grid lg:grid-cols-2 gap-16 items-center">
 
                 <!-- Image -->
-                <div class="relative group">
+                <div data-aos="fade-right" data-aos-duration="1200" class="relative group">
 
                     <div
                         class="absolute inset-0 bg-gradient-to-r from-red-500 to-orange-400 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition">
@@ -41,7 +42,7 @@
 
 
                 <!-- Content -->
-                <div>
+                <div data-aos="fade-left" data-aos-duration="1200">
 
                     <h3 class="text-2xl font-semibold text-gray-900 mb-6">
                         Kenapa Memilih Mitramedia?
@@ -50,7 +51,9 @@
                     <div class="grid sm:grid-cols-2 gap-6">
 
                         <!-- Item -->
-                        <div class="group bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
+                        <div data-aos="fade-up" data-aos-delay="100"
+                            class="group bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
+
                             <div class="text-red-500 text-3xl mb-3">
                                 <i class="fa-solid fa-lightbulb"></i>
                             </div>
@@ -62,10 +65,13 @@
                             <p class="text-gray-600 text-sm">
                                 Desain neon box dan reklame dibuat sesuai kebutuhan brand bisnis Anda.
                             </p>
+
                         </div>
 
                         <!-- Item -->
-                        <div class="group bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
+                        <div data-aos="fade-up" data-aos-delay="200"
+                            class="group bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
+
                             <div class="text-red-500 text-3xl mb-3">
                                 <i class="fa-solid fa-star"></i>
                             </div>
@@ -77,10 +83,13 @@
                             <p class="text-gray-600 text-sm">
                                 Menggunakan bahan premium agar reklame tahan lama dan tetap terlihat menarik.
                             </p>
+
                         </div>
 
                         <!-- Item -->
-                        <div class="group bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
+                        <div data-aos="fade-up" data-aos-delay="300"
+                            class="group bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
+
                             <div class="text-red-500 text-3xl mb-3">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
@@ -92,10 +101,13 @@
                             <p class="text-gray-600 text-sm">
                                 Penempatan media promosi di lokasi yang memiliki visibilitas tinggi.
                             </p>
+
                         </div>
 
                         <!-- Item -->
-                        <div class="group bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
+                        <div data-aos="fade-up" data-aos-delay="400"
+                            class="group bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
+
                             <div class="text-red-500 text-3xl mb-3">
                                 <i class="fa-solid fa-screwdriver-wrench"></i>
                             </div>
@@ -107,6 +119,7 @@
                             <p class="text-gray-600 text-sm">
                                 Tim teknisi berpengalaman memastikan pemasangan aman dan presisi.
                             </p>
+
                         </div>
 
                     </div>
