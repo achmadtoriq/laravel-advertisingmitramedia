@@ -16,9 +16,9 @@
         e.preventDefault();
 
         if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            window.location.href = "tel:+628123456789";
+            window.location.href = "tel:+6282213280698";
         } else {
-            window.location.href = "https://wa.me/628123456789";
+            window.location.href = "https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F";
         }
     }
 </script>

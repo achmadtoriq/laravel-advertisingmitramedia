@@ -57,7 +57,7 @@
                         </p>
 
                         <h3 class="text-4xl font-bold text-red-600 mb-6">
-                            0817-784-867
+                            0822-1328-0698
                         </h3>
 
                         <a href="https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F"
