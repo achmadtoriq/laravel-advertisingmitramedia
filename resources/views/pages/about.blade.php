@@ -1,4 +1,25 @@
 <x-layout>
+    <x-slot:title>Tentang Mitramedia Advertising | Jasa Neon Box Surabaya</x-slot:title>
+    <x-slot:description>Mitra Media Advertising adalah perusahaan jasa reklame di Surabaya yang menyediakan neon box, papan reklame, dan huruf timbul dengan desain profesional dan kualitas terbaik.</x-slot:description>
+    <x-slot:keyword>mitramedia advertising, jasa neon box surabaya, jasa reklame surabaya, papan reklame surabaya, huruf timbul surabaya, perusahaan reklame surabaya</x-slot:keyword>
+
+    <x-slot:OgMeta>
+        <meta property="og:title" content="Jasa Neon Box Surabaya">
+        <meta property="og:description"
+            content="Mitra Media Advertising adalah perusahaan jasa reklame di Surabaya yang menyediakan neon box, papan reklame, dan huruf timbul dengan desain profesional dan kualitas terbaik.">
+        <meta property="og:image" content="{{ asset('assets/images/about-img.webp') }}">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:type" content="website">
+    </x-slot:OgMeta>
+
+    <x-slot:TwitterMeta>
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Jasa Neon Box Surabaya">
+        <meta name="twitter:description" content="Mitra Media Advertising adalah perusahaan jasa reklame di Surabaya yang menyediakan neon box, papan reklame, dan huruf timbul dengan desain profesional dan kualitas terbaik.">
+        <meta name="twitter:image" content="{{ asset('assets/images/about-img.webp') }}">
+    </x-slot:TwitterMeta>
+
+
     <section class="relative py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
 
         <!-- Decorative Glow -->

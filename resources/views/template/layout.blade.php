@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {{-- Title --}}
-    <title>Jasa Neon Box Surabaya | Papan Reklame Murah</title>
+    <title>{{ $title ?? 'Jasa Neon Box Surabaya | Mitramedia Advertising' }}</title>
 
     {{-- Meta Description --}}
     <meta name="description"
-        content="Jasa pembuatan neon box dan papan reklame Surabaya dengan desain profesional, harga murah, dan pemasangan berkualitas.">
+        content="{{ $description ?? 'Jasa neon box Surabaya profesional.' }}">
 
     {{-- Keywords --}}
-    <meta name="keywords" content="jasa neon box, jasa pembuatan neon box, neon box murah, papan reklame surabaya">
+    <meta name="keywords" content="{{ $keyword ?? 'jasa neon box, jasa pembuatan neon box, neon box murah, papan reklame surabaya' }}">
 
     {{-- Author --}}
     <meta name="author" content="Mitra Media Advertising">
@@ -25,17 +25,10 @@
     <link rel="canonical" href="{{ url()->current() }}">
 
     {{-- Open Graph --}}
-    <meta property="og:title" content="Jasa Neon Box Surabaya">
-    <meta property="og:description" content="Jasa pembuatan neon box profesional di Surabaya">
-    <meta property="og:image" content="{{ asset('img/og-image.jpg') }}">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:type" content="website">
+    {{ $OgMeta ?? ''}}
 
     {{-- Twitter Card --}}
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="{{ asset('img/og-image.jpg') }}">
+    {{ $TwitterMeta ?? '' }}
 
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('favicon.ico') }}">
@@ -59,9 +52,9 @@
             "name": "Mitra Media Advertising",
             "description": "Jasa neon box dan papan reklame Surabaya",
             "areaServed": "Surabaya",
-            "url": "https://domainanda.com",
-            "image": "https://domainanda.com/img/og-image.jpg",
-            "telephone": "+62xxxxxxxxxx"
+            "url": "https://advertisingmitramedia.com/",
+            "image": "https://advertisingmitramedia.com/assets/images/about-img.webp",
+            "telephone": "+6282213280698"
             }
         </script>
     @endverbatim

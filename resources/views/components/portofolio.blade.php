@@ -27,7 +27,7 @@
             <!-- Item -->
             <div class="group relative overflow-hidden rounded-2xl shadow-lg" data-aos="fade-up">
 
-                <img src="/img/project1.jpg"
+                <img src="{{ asset('assets/images/project/project-1.jpg') }}"
                     class="w-full h-72 object-cover group-hover:scale-110 transition duration-500">
 
                 <!-- Overlay -->
@@ -55,7 +55,7 @@
             <!-- Item -->
             <div class="group relative overflow-hidden rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
 
-                <img src="/img/project2.jpg"
+                <img src="{{ asset('assets/images/project/project-2.jpg') }}"
                     class="w-full h-72 object-cover group-hover:scale-110 transition duration-500">
 
                 <div
@@ -82,7 +82,7 @@
             <!-- Item -->
             <div class="group relative overflow-hidden rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
 
-                <img src="/img/project3.jpg"
+                <img src="{{ asset('assets/images/project/project-3.jpg')}}"
                     class="w-full h-72 object-cover group-hover:scale-110 transition duration-500">
 
                 <div
