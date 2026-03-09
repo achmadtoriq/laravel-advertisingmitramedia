@@ -29,7 +29,8 @@
     <x-kenapa></x-kenapa>
     <x-layanan></x-layanan>
     <x-portofolio></x-portofolio>
-    <x-butuh></x-butuh>
+    <x-cta></x-cta>
     <x-maps></x-maps>
     <x-partner></x-partner>
+    <x-butuh></x-butuh>
 </x-layout>

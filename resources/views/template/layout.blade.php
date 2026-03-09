@@ -9,11 +9,11 @@
     <title>{{ $title ?? 'Jasa Neon Box Surabaya | Mitramedia Advertising' }}</title>
 
     {{-- Meta Description --}}
-    <meta name="description"
-        content="{{ $description ?? 'Jasa neon box Surabaya profesional.' }}">
+    <meta name="description" content="{{ $description ?? 'Jasa neon box Surabaya profesional.' }}">
 
     {{-- Keywords --}}
-    <meta name="keywords" content="{{ $keyword ?? 'jasa neon box, jasa pembuatan neon box, neon box murah, papan reklame surabaya' }}">
+    <meta name="keywords"
+        content="{{ $keyword ?? 'jasa neon box, jasa pembuatan neon box, neon box murah, papan reklame surabaya' }}">
 
     {{-- Author --}}
     <meta name="author" content="Mitra Media Advertising">
@@ -25,7 +25,7 @@
     <link rel="canonical" href="{{ url()->current() }}">
 
     {{-- Open Graph --}}
-    {{ $OgMeta ?? ''}}
+    {{ $OgMeta ?? '' }}
 
     {{-- Twitter Card --}}
     {{ $TwitterMeta ?? '' }}
@@ -93,6 +93,7 @@
 
     @php
         $isHome = request()->is('/');
+        $isArtikel = request()->is('/artikel');
     @endphp
 
     <header x-data="{ scrolled: false, open: false }" @scroll.window="scrolled = window.scrollY > 10"
@@ -106,7 +107,7 @@
                 :src="isMobile
                     ?
                     '{{ asset('assets/images/mitramedia.webp') }}' :
-                    (scrolled || !{{ $isHome ? 'true' : 'false' }} ?
+                    (scrolled || !{{ $isHome || !$isArtikel ? 'true' : 'false' }} ?
                         '{{ asset('assets/images/mitramedia.webp') }}' :
                         '{{ asset('assets/images/mitramedia2.webp') }}')"
                 alt="Jasa Neon Box Surabaya">
@@ -119,39 +120,48 @@
             <!-- Desktop Menu -->
             <nav class="hidden md:flex items-center gap-6 text-sm font-bold">
 
-                <a href="/"
+                <a href="{{ url('/') }}"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
         {{ request()->is('/') ? 'bg-red-600 text-white' : '' }}"
                     :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     HOME
                 </a>
 
-                <a href="/about-us"
+                <a href="{{ url('about-us') }}"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
         {{ request()->is('about-us') ? 'bg-red-600 text-white' : '' }}"
                     :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     ABOUT
                 </a>
 
-                <a href="/project"
+                <a href="{{ url('artikel') }}"
+                    class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
+        {{ request()->is('artikel') ? 'bg-red-600 text-white' : '' }}"
+                    :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
+                    ARTIKEL
+                </a>
+
+                <a href="{{ url('project') }}"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
         {{ request()->is('project') ? 'bg-red-600 text-white' : '' }}"
                     :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     PROJECT
                 </a>
 
-                <a href="/contact-us"
+                <a href="{{ url('contact-us') }}"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
         {{ request()->is('contact-us') ? 'bg-red-600 text-white' : '' }}"
                     :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     CONTACT
                 </a>
 
-                <a href="#" class="px-4 py-2 rounded-full bg-red-600 text-white">
+                <a href="https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F"
+                    target="_blank" class="px-4 py-2 rounded-full bg-red-600 text-white">
                     HUBUNGI KAMI
                 </a>
 
-                <a href="#" class="flex items-center gap-1" :class="scrolled ? 'text-black' : 'text-white'">
+                <a href="https://www.instagram.com/mitramedia.adv" target="_blank" class="flex items-center gap-1"
+                    :class="scrolled ? 'text-black' : 'text-white'">
                     <i class="fa-brands fa-instagram"></i> mitramedia.adv
                 </a>
 
@@ -165,35 +175,43 @@
 
             <div class="flex flex-col p-6 gap-4 font-bold text-black">
 
-                <a href="/"
+                <a href="{{ url('/') }}"
                     class="px-4 py-2 rounded-lg
         {{ request()->is('/') ? 'bg-red-600 text-white' : '' }}">
                     HOME
                 </a>
 
-                <a href="/about-us"
+                <a href="{{ url('about-us') }}"
                     class="px-4 py-2 rounded-lg
         {{ request()->is('about-us') ? 'bg-red-600 text-white' : '' }}">
                     ABOUT
                 </a>
 
-                <a href="/project"
+                <a href="{{ url('artikel') }}"
+                    class="px-4 py-2 rounded-lg
+        {{ request()->is('artikel') ? 'bg-red-600 text-white' : '' }}">
+                    ARTIKEL
+                </a>
+
+                <a href="{{ url('project') }}"
                     class="px-4 py-2 rounded-lg
         {{ request()->is('project') ? 'bg-red-600 text-white' : '' }}">
                     PROJECT
                 </a>
 
-                <a href="/contact-us"
+                <a href="{{ url('contact-us') }}"
                     class="px-4 py-2 rounded-lg
         {{ request()->is('contact-us') ? 'bg-red-600 text-white' : '' }}">
                     CONTACT
                 </a>
 
-                <a href="#" class="bg-red-600 text-white px-4 py-2 rounded-full text-center">
+                <a href="https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F"
+                    target="_blank" class="bg-red-600 text-white px-4 py-2 rounded-full text-center">
                     HUBUNGI KAMI
                 </a>
 
-                <a href="#" class="flex items-center gap-1 text-red-600 justify-center">
+                <a href="https://www.instagram.com/mitramedia.adv" target="_blank"
+                    class="flex items-center gap-1 text-red-600 justify-center">
                     <i class="fa-brands fa-instagram"></i> mitramedia.adv
                 </a>
 
@@ -249,8 +267,8 @@
 
                     <div class="flex gap-4">
                         <a href="#">
-                            <img class="w-8 hover:scale-110 transition"
-                                src="{{ asset('assets/square-facebook.svg') }}" alt="">
+                            <img class="w-8 hover:scale-110 transition" src="{{ asset('assets/square-facebook.svg') }}"
+                                alt="">
                         </a>
 
                         <a href="#">
@@ -326,7 +344,8 @@
         </div>
 
         <!-- Button -->
-        <a href="https://wa.me/6282213280698" target="_blank"
+        <a href="https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F"
+            target="_blank"
             class="relative flex items-center justify-center w-16 h-16 rounded-full bg-green-500 text-white shadow-2xl hover:scale-110 transition">
 
             <span class="absolute w-full h-full rounded-full bg-green-400 opacity-30 animate-ping"></span>

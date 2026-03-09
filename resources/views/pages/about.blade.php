@@ -1,7 +1,9 @@
 <x-layout>
     <x-slot:title>Tentang Mitramedia Advertising | Jasa Neon Box Surabaya</x-slot:title>
-    <x-slot:description>Mitra Media Advertising adalah perusahaan jasa reklame di Surabaya yang menyediakan neon box, papan reklame, dan huruf timbul dengan desain profesional dan kualitas terbaik.</x-slot:description>
-    <x-slot:keyword>mitramedia advertising, jasa neon box surabaya, jasa reklame surabaya, papan reklame surabaya, huruf timbul surabaya, perusahaan reklame surabaya</x-slot:keyword>
+    <x-slot:description>Mitra Media Advertising adalah perusahaan jasa reklame di Surabaya yang menyediakan neon box,
+        papan reklame, dan huruf timbul dengan desain profesional dan kualitas terbaik.</x-slot:description>
+    <x-slot:keyword>mitramedia advertising, jasa neon box surabaya, jasa reklame surabaya, papan reklame surabaya,
+        huruf timbul surabaya, perusahaan reklame surabaya</x-slot:keyword>
 
     <x-slot:OgMeta>
         <meta property="og:title" content="Jasa Neon Box Surabaya">
@@ -15,7 +17,8 @@
     <x-slot:TwitterMeta>
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Jasa Neon Box Surabaya">
-        <meta name="twitter:description" content="Mitra Media Advertising adalah perusahaan jasa reklame di Surabaya yang menyediakan neon box, papan reklame, dan huruf timbul dengan desain profesional dan kualitas terbaik.">
+        <meta name="twitter:description"
+            content="Mitra Media Advertising adalah perusahaan jasa reklame di Surabaya yang menyediakan neon box, papan reklame, dan huruf timbul dengan desain profesional dan kualitas terbaik.">
         <meta name="twitter:image" content="{{ asset('assets/images/about-img.webp') }}">
     </x-slot:TwitterMeta>
 
@@ -148,12 +151,12 @@
                     <!-- CTA -->
                     <div class="mt-10 flex flex-wrap gap-4">
 
-                        <a href="#kontak"
+                        <a href="#" onclick="contactAction(event)" target="_blank"
                             class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition">
                             Konsultasi Gratis
                         </a>
 
-                        <a href="#portfolio"
+                        <a href="{{ url('project') }}"
                             class="border border-gray-300 hover:border-red-500 px-6 py-3 rounded-lg font-semibold transition">
                             Lihat Portfolio
                         </a>
@@ -166,8 +169,24 @@
 
         </div>
 
+
+        <x-human-value></x-human-value>
+
     </section>
+
 
     <x-butuh></x-butuh>
 
 </x-layout>
+
+<script>
+    function contactAction(e) {
+        e.preventDefault();
+
+        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            window.location.href = "tel:+628123456789";
+        } else {
+            window.location.href = "https://wa.me/628123456789";
+        }
+    }
+</script>

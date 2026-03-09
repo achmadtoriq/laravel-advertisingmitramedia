@@ -50,15 +50,7 @@
                 x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0"
                 class="mt-10 flex flex-wrap gap-4">
 
-                <a href="#kontak"
-                    class="bg-red-600 hover:bg-red-700 px-7 py-3 rounded-lg font-semibold shadow-lg transition">
-                    Konsultasi Gratis
-                </a>
-
-                <a href="#portfolio"
-                    class="bg-white/10 backdrop-blur-md border border-white/30 px-7 py-3 rounded-lg hover:bg-white hover:text-black transition">
-                    Lihat Portfolio
-                </a>
+                <x-two-button classbg="true"></x-two-button>
 
             </div>
 
@@ -66,7 +58,7 @@
 
                 <!-- PROJECT -->
                 <div class="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-4 text-center hover:border-red-500/40 transition"
-                    x-data="{ count: 0 }" x-init="let i = setInterval(() => { count++; if (count >= 100) clearInterval(i) }, 15)">
+                    x-data="{ count: 0 }" x-init="let i = setInterval(() => { count++; if (count >= 497) clearInterval(i) }, 15)">
 
                     <!-- Glow -->
                     <div class="absolute inset-0 bg-red-500/0 group-hover:bg-red-500/10 blur-xl transition"></div>

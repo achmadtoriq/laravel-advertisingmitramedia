@@ -25,8 +25,12 @@
                 Neon Box
             </button>
 
-            <button class="filter-btn" data-filter="huruf">
-                Huruf Timbul
+            <button class="filter-btn" data-filter="letter">
+                Letter Timbul
+            </button>
+
+            <button class="filter-btn" data-filter="branding">
+                Indoor Outdoor
             </button>
 
             <button class="filter-btn" data-filter="billboard">

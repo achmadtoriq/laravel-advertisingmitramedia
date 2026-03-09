@@ -27,7 +27,7 @@
             <!-- Item -->
             <div class="group relative overflow-hidden rounded-2xl shadow-lg" data-aos="fade-up">
 
-                <img src="{{ asset('assets/images/project/project-1.jpg') }}"
+                <img src="{{ asset('assets/images/project/1745832027009-neon-box-prodia.jpg') }}"
                     class="w-full h-72 object-cover group-hover:scale-110 transition duration-500">
 
                 <!-- Overlay -->
@@ -38,7 +38,7 @@
                     <div class="text-center text-white">
 
                         <h3 class="text-lg font-semibold mb-1">
-                            Neon Box Cafe
+                            Neon Box
                         </h3>
 
                         <p class="text-sm opacity-80">
@@ -55,7 +55,7 @@
             <!-- Item -->
             <div class="group relative overflow-hidden rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
 
-                <img src="{{ asset('assets/images/project/project-2.jpg') }}"
+                <img src="{{ asset('assets/images/project/1745831843444-letter-timbul-hotel-mutiara-2.jpg') }}"
                     class="w-full h-72 object-cover group-hover:scale-110 transition duration-500">
 
                 <div
@@ -65,7 +65,7 @@
                     <div class="text-center text-white">
 
                         <h3 class="text-lg font-semibold mb-1">
-                            Huruf Timbul Toko
+                            Huruf Timbul
                         </h3>
 
                         <p class="text-sm opacity-80">
@@ -82,7 +82,7 @@
             <!-- Item -->
             <div class="group relative overflow-hidden rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
 
-                <img src="{{ asset('assets/images/project/project-3.jpg')}}"
+                <img src="{{ asset('assets/images/project/1745832286398-billboard-surabaya.jpg')}}"
                     class="w-full h-72 object-cover group-hover:scale-110 transition duration-500">
 
                 <div
@@ -112,7 +112,7 @@
         <!-- Button -->
         <div class="text-center mt-14">
 
-            <a href="/project"
+            <a href="{{ url('project')}}"
                 class="inline-block bg-red-600 text-white px-8 py-3 rounded-lg
     font-semibold hover:bg-red-700 transition">
 

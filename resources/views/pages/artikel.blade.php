@@ -24,15 +24,21 @@
 
     <section class="relative py-28 text-white text-center overflow-hidden">
 
-        <div class="absolute inset-0 bg-gradient-to-r from-red-600 via-orange-500 to-red-500"></div>
+        <!-- Background Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-r from-red-800 via-red-600 to-orange-500"></div>
 
+        <!-- Glow Effect -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-orange-400/30 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-500/30 blur-[120px] rounded-full"></div>
+
+        <!-- Content -->
         <div class="relative max-w-5xl mx-auto px-6">
 
-            <h1 class="text-5xl font-bold mb-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
                 Artikel Mitramedia Advertising
             </h1>
 
-            <p class="opacity-90">
+            <p class="text-white/90">
                 Tips neon box, papan reklame, dan huruf timbul Surabaya
             </p>
 
@@ -40,6 +46,6 @@
 
     </section>
 
-        <x-artikel></x-artikel>
+    <x-artikel></x-artikel>
 
 </x-layout>

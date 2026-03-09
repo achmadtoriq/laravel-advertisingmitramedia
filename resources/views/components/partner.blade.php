@@ -30,7 +30,7 @@
                 <template x-for="logo in logos">
 
                     <img :src="logo"
-                        class="h-6 md:h-10 lg:h-12
+                        class="h-6 md:h-10 lg:h-16
     hover:scale-110
     transition duration-500">
 
@@ -67,10 +67,25 @@
 
             logos: [
                 "/assets/images/partner/logo-acer.webp",
-                "/assets/images/partner/logo-oppo.webp",
-                "/assets/images/partner/logo-sharp.webp",
+                "/assets/images/partner/logo-aga.webp",
+                "/assets/images/partner/logo-akr.webp",
+                "/assets/images/partner/logo-asus.webp",
+                "/assets/images/partner/logo-bank-jatim.webp",
+                "/assets/images/partner/logo-bosch.webp",
+                "/assets/images/partner/logo-hock.jpeg",
+                "/assets/images/partner/logo-hp.webp",
                 "/assets/images/partner/logo-jnt.webp",
-                "/assets/images/partner/logo-bank-jatim.webp"
+                "/assets/images/partner/logo-le-minerale.webp",
+                "/assets/images/partner/logo-maxxis.webp",
+                "/assets/images/partner/logo-mayora.webp",
+                "/assets/images/partner/logo-oppo.webp",
+                "/assets/images/partner/logo-paragon.webp",
+                "/assets/images/partner/logo-pucuk-harum.webp",
+                "/assets/images/partner/logo-sharp.webp",
+                "/assets/images/partner/logo-shunda-plafon.webp",
+                "/assets/images/partner/logo-ssa.webp",
+                "/assets/images/partner/logo-ubs-webp",
+                "/assets/images/partner/logo-vivo.webp"
             ],
 
             start() {

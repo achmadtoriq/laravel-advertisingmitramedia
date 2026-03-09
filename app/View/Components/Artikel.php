@@ -26,7 +26,7 @@ class Artikel extends Component
         $articles = collect(config('artikel'));
 
         $page = request()->get('page', 1);
-        $perPage = 3;
+        $perPage = 4;
 
         $items = $articles->forPage($page, $perPage)->values();
 

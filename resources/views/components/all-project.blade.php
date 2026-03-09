@@ -5,15 +5,15 @@
         <div id="portfolio-grid" class="columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
 
             @foreach ($projects as $project)
-                <div class="portfolio-item {{ $project['category'] }} break-inside-avoid" data-aos="fade-up">
+                <div class="portfolio-item {{ $project->category }} break-inside-avoid" data-aos="fade-up">
 
-                    <a href="{{ asset($project['image']) }}" data-fancybox="gallery">
+                    <a href="{{ asset('assets/images/project/'.$project->image) }}" data-fancybox="gallery">
 
                         <div
                             class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-500">
 
-                            <img src="{{ asset($project['image']) }}"
-                                class="w-full object-cover group-hover:scale-110 transition duration-700">
+                            <img loading="lazy" src="{{ asset('assets/images/project/'.$project->image) }}"
+                                class="w-full object-cover group-hover:scale-110 transition duration-700" alt="{{ $project->title }}">
 
                             <div
                                 class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
@@ -21,11 +21,11 @@
                                 <div class="text-white text-center px-4">
 
                                     <h3 class="text-lg font-semibold">
-                                        {{ $project['title'] }}
+                                        {{ $project->title }}
                                     </h3>
 
                                     <p class="text-sm opacity-80">
-                                        {{ $project['location'] }}
+                                        {{ $project->location }}
                                     </p>
 
                                 </div>

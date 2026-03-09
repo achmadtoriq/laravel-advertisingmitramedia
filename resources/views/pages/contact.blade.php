@@ -50,7 +50,7 @@
 
                     <!-- Phone Highlight -->
                     <div data-aos="fade-right"
-                        class="bg-white border border-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition">
+                        class="bg-white border border-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition text-center">
 
                         <p class="text-gray-500 mb-2">
                             Konsultasi Langsung
@@ -60,8 +60,8 @@
                             0817-784-867
                         </h3>
 
-                        <a href="https://wa.me/62817784867"
-                            class="relative inline-flex items-center gap-2 bg-green-500 text-white px-7 py-3 rounded-full font-semibold shadow hover:scale-105 transition">
+                        <a href="https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F"
+                            class="relative inline-flex items-center gap-2 bg-green-500 text-white px-7 py-3 rounded-full font-semibold shadow hover:scale-105 transition" target="_blank">
 
                             <span
                                 class="absolute animate-ping w-full h-full rounded-full bg-green-400 opacity-30"></span>
@@ -88,6 +88,16 @@
                         </div>
 
                         <div class="flex gap-4">
+                            <i class="fa-brands fa-whatsapp text-red-500"></i>
+                            <p class="text-gray-600">0822-1328-0698</p>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <i class="fa-brands fa-whatsapp text-red-500"></i>
+                            <p class="text-gray-600">0817-784-867</p>
+                        </div>
+
+                        <div class="flex gap-4">
                             <i class="fa-solid fa-phone text-red-500"></i>
                             <p class="text-gray-600">(031) 58253549</p>
                         </div>
@@ -105,7 +115,7 @@
 
                         <iframe
                             src="https://maps.google.com/maps?q=Nginden%20Semolo%20Surabaya&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                            class="w-full h-72 border-0 grayscale hover:grayscale-0 transition duration-500">
+                            class="w-full h-72 border-0 transition duration-500">
                         </iframe>
 
                     </div>

@@ -22,7 +22,7 @@
 
         <div data-aos="zoom-in" data-aos-delay="200" class="mt-8">
 
-            <a href="https://wa.me/6282213280698"
+            <a href="https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F" target="_blank"
                 class="inline-flex items-center gap-3 bg-white text-red-600 px-8 py-4 rounded-full font-semibold shadow-lg hover:scale-105 hover:shadow-2xl transition">
 
                 <i class="fa-brands fa-whatsapp text-green-500"></i>
