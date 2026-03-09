@@ -93,7 +93,6 @@
 
     @php
         $isHome = request()->is('/');
-        $isArtikel = request()->is('/artikel');
     @endphp
 
     <header x-data="{ scrolled: false, open: false }" @scroll.window="scrolled = window.scrollY > 10"
@@ -107,7 +106,7 @@
                 :src="isMobile
                     ?
                     '{{ asset('assets/images/mitramedia.webp') }}' :
-                    (scrolled || !{{ $isHome || !$isArtikel ? 'true' : 'false' }} ?
+                    (scrolled || !{{ $isHome ? 'true' : 'false' }} ?
                         '{{ asset('assets/images/mitramedia.webp') }}' :
                         '{{ asset('assets/images/mitramedia2.webp') }}')"
                 alt="Jasa Neon Box Surabaya">
