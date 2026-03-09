@@ -160,7 +160,7 @@
                 </a>
 
                 <a href="https://www.instagram.com/mitramedia.adv" target="_blank" class="flex items-center gap-1"
-                    :class="scrolled ? 'text-black' : 'text-white'">
+                    :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     <i class="fa-brands fa-instagram"></i> mitramedia.adv
                 </a>
 
