@@ -133,12 +133,12 @@
                     ABOUT
                 </a>
 
-                <a href="{{ url('artikel') }}"
+                {{-- <a href="{{ url('artikel') }}"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
         {{ request()->is('artikel') ? 'bg-red-600 text-white' : '' }}"
                     :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     ARTIKEL
-                </a>
+                </a> --}}
 
                 <a href="{{ url('project') }}"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
@@ -186,11 +186,11 @@
                     ABOUT
                 </a>
 
-                <a href="{{ url('artikel') }}"
+                {{-- <a href="{{ url('artikel') }}"
                     class="px-4 py-2 rounded-lg
         {{ request()->is('artikel') ? 'bg-red-600 text-white' : '' }}">
                     ARTIKEL
-                </a>
+                </a> --}}
 
                 <a href="{{ url('project') }}"
                     class="px-4 py-2 rounded-lg
