@@ -93,6 +93,7 @@
 
     @php
         $isHome = request()->is('/');
+        $isSpecialPage = request()->is('/') || request()->is('artikel');
     @endphp
 
     <header x-data="{ scrolled: false, open: false }" @scroll.window="scrolled = window.scrollY > 10"
@@ -106,10 +107,21 @@
                 :src="isMobile
                     ?
                     '{{ asset('assets/images/mitramedia.webp') }}' :
+                    (scrolled ?
+                        '{{ asset('assets/images/mitramedia.webp') }}' :
+                        '{{ $isSpecialPage ? asset('assets/images/mitramedia2.webp') : asset('assets/images/mitramedia.webp') }}'
+                    )"
+                alt="Jasa Neon Box Surabaya">
+
+            {{-- <img loading="lazy" decoding="async" class="h-10 transition-all duration-300" x-data="{ isMobile: window.innerWidth < 768 }"
+                @resize.window="isMobile = window.innerWidth < 768"
+                :src="isMobile
+                    ?
+                    '{{ asset('assets/images/mitramedia.webp') }}' :
                     (scrolled || !{{ $isHome ? 'true' : 'false' }} ?
                         '{{ asset('assets/images/mitramedia.webp') }}' :
                         '{{ asset('assets/images/mitramedia2.webp') }}')"
-                alt="Jasa Neon Box Surabaya">
+                alt="Jasa Neon Box Surabaya"> --}}
 
             <!-- Hamburger -->
             <button @click="open = !open" class="md:hidden text-2xl text-black">
@@ -133,12 +145,12 @@
                     ABOUT
                 </a>
 
-                {{-- <a href="{{ url('artikel') }}"
+                <a href="{{ url('artikel') }}"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
         {{ request()->is('artikel') ? 'bg-red-600 text-white' : '' }}"
                     :class="scrolled || !{{ $isHome ? 'true' : 'false' }} ? 'text-black' : 'text-white'">
                     ARTIKEL
-                </a> --}}
+                </a>
 
                 <a href="{{ url('project') }}"
                     class="px-4 py-2 rounded-full hover:ring-2 hover:ring-red-600
@@ -186,11 +198,11 @@
                     ABOUT
                 </a>
 
-                {{-- <a href="{{ url('artikel') }}"
+                <a href="{{ url('artikel') }}"
                     class="px-4 py-2 rounded-lg
         {{ request()->is('artikel') ? 'bg-red-600 text-white' : '' }}">
                     ARTIKEL
-                </a> --}}
+                </a>
 
                 <a href="{{ url('project') }}"
                     class="px-4 py-2 rounded-lg

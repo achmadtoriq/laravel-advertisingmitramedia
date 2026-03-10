@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Main;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -26,10 +27,18 @@ Route::get('/sitemap.xml', function () {
     $pages = [
         url('/'),
         url('/about-us'),
+        url('/artikel'),
         url('/project'),
         url('/contact-us')
     ];
 
-    return response()->view('template.sitemap', compact('pages'))
-        ->header('Content-Type', 'text/xml');
+    $articles = Article::pluck('slug')->map(function ($slug) {
+        return url('/artikel/' . $slug);
+    });
+
+    $urls = collect($pages)->merge($articles);
+
+    return response()->view('template.sitemap',  [
+        'urls' => $urls
+    ])->header('Content-Type', 'text/xml');
 });

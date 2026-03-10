@@ -15,34 +15,49 @@
 
                 <input type="text" placeholder="Cari artikel..." x-model="search"
                     class="w-full pl-12 pr-4 py-3
-border border-gray-200
-rounded-full
-bg-white
-shadow-sm
-transition
-focus:outline-none
-focus:ring-2
-focus:ring-red-500/40
-focus:border-red-500
-placeholder:text-gray-400">
+                            border border-gray-200
+                            rounded-full
+                            bg-white
+                            shadow-sm
+                            transition
+                            focus:outline-none
+                            focus:ring-2
+                            focus:ring-red-500/40
+                            focus:border-red-500
+                            placeholder:text-gray-400">
 
             </div>
 
             <div class="flex gap-3">
 
-                <button @click="category='all'" class="px-4 py-2 bg-gray-100 rounded-full">
+                <button @click="category='all'"
+                    :class="category === 'all'
+                        ?
+                        'bg-red-500 text-white' :
+                        'bg-gray-100 text-gray-700'"
+                    class="px-4 py-2 rounded-full transition cursor-pointer">
 
                     Semua
 
                 </button>
 
-                <button @click="category='neon box'" class="px-4 py-2 bg-gray-100 rounded-full">
+                <button @click="category='neon box'"
+                    :class="category === 'neon box'
+                        ?
+                        'bg-red-500 text-white' :
+                        'bg-gray-100 text-gray-700'"
+                    class="px-4 py-2 rounded-full transition cursor-pointer">
 
                     Neon Box
 
                 </button>
 
-                <button @click="category='reklame'" class="px-4 py-2 bg-gray-100 rounded-full">
+                <button @click="category='reklame'"
+                    :class="category === 'reklame'
+                        ?
+                        'bg-red-500 text-white' :
+                        'bg-gray-100 text-gray-700'"
+                    class="px-4 py-2 rounded-full transition cursor-pointer">
 
                     Reklame
 

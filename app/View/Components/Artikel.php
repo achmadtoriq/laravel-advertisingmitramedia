@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Article;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -23,7 +24,17 @@ class Artikel extends Component
     public function render(): View|Closure|string
     {
 
-        $articles = collect(config('artikel'));
+        $articles = Article::with('tags')->latest()->get()->map(function ($article) {
+            return [
+                'title' => $article->title,
+                'slug' => $article->slug,
+                'image' => $article->image,
+                'excerpt' => $article->excerpt,
+                'content' => $article->content,
+                'views' => $article->views,
+                'tags' => $article->tags->pluck('name')->toArray()
+            ];
+        });
 
         $page = request()->get('page', 1);
         $perPage = 4;

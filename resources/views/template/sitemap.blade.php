@@ -2,7 +2,7 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    @foreach ($pages as $page)
+    @foreach ($urls as $page)
         <url>
             <loc>{{ $page }}</loc>
             <changefreq>weekly</changefreq>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class Main extends Controller
@@ -24,12 +25,23 @@ class Main extends Controller
     public function artikelDetail($slug)
     {
 
-        $articles = collect(config('artikel'));
-        $article = $articles->firstWhere('slug', $slug);
+        $article = Article::with('tags')
+        ->where('slug', $slug)
+        ->firstOrFail();
+
+        $data = [
+            'title' => $article->title,
+            'slug' => $article->slug,
+            'image' => $article->image,
+            'excerpt' => $article->excerpt,
+            'content' => $article->content,
+            'views' => $article->views,
+            'tags' => $article->tags->pluck('name')->toArray()
+        ];
 
         abort_if(!$article, 404);
 
-        return view('pages.artikel-detail', compact('article'));
+        return view('pages.artikel-detail',['article' => $data]);
     }
 
     public function project()
