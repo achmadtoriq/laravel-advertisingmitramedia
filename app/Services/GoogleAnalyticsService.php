@@ -47,7 +47,8 @@ class GoogleAnalyticsService
             ],
             'metrics' => [
                 new Metric([
-                    'name' => 'activeUsers'
+                    // 'name' => 'activeUsers'
+                    'name' => 'totalUsers'
                 ])
             ]
         ]);
