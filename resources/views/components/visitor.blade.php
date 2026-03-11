@@ -45,7 +45,7 @@
 
     <!-- BUTTON -->
     <button @click="open=!open"
-        class="w-14 h-14 bg-red-600 text-white rounded-full shadow-xl flex items-center justify-center hover:scale-110 hover:rotate-45 transition duration-300">
+        class="w-14 h-14 bg-red-600 text-white rounded-full shadow-xl cursor-pointer flex items-center justify-center hover:scale-110 hover:rotate-45 transition duration-300">
 
         <i class="fa-solid fa-gear text-xl"></i>
 
