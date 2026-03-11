@@ -35,6 +35,13 @@
         <div class="space-y-3">
 
             <div class="flex justify-between items-center">
+                <span class="text-gray-600">Realtime Users</span>
+                <span class="font-bold text-red-500 text-lg">
+                    {{ number_format($realtimeUsers ?? 0) }}
+                </span>
+            </div>
+
+            <div class="flex justify-between items-center">
                 <span class="text-gray-600">Today</span>
                 <span class="font-bold text-red-500 text-lg">
                     {{ number_format($todayVisitors ?? 0) }}

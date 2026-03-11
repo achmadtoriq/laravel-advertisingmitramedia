@@ -5,11 +5,46 @@ namespace App\Services;
 use Google\Analytics\Data\V1beta\Client\BetaAnalyticsDataClient;
 use Google\Analytics\Data\V1beta\DateRange;
 use Google\Analytics\Data\V1beta\Metric;
+use Google\Analytics\Data\V1beta\RunRealtimeReportRequest;
 use Google\Analytics\Data\V1beta\RunReportRequest;
 use Illuminate\Support\Facades\Cache;
 
 class GoogleAnalyticsService
 {
+    public function getRealtimeUsers()
+    {
+        return Cache::remember('ga_realtime', 60, function () {
+
+            $client = new BetaAnalyticsDataClient([
+                'credentials' => storage_path(env('GA_CREDENTIALS'))
+            ]);
+
+            $request = new RunRealtimeReportRequest([
+                'property' => 'properties/' . env('GA_PROPERTY_ID'),
+                'metrics' => [
+                    new Metric([
+                        'name' => 'activeUsers'
+                    ])
+                ]
+            ]);
+
+            $response = $client->runRealtimeReport($request);
+
+            $rows = $response->getRows();
+
+            if ($rows && count($rows) > 0) {
+
+                $metrics = $rows[0]->getMetricValues();
+
+                if ($metrics && count($metrics) > 0) {
+                    return (int) $metrics[0]->getValue();
+                }
+            }
+
+            return 0;
+        });
+    }
+
     public function getTodayVisitors()
     {
         return Cache::remember('ga_today', 600, function () {
