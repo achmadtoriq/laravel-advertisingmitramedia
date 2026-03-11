@@ -16,7 +16,7 @@ class GoogleAnalyticsService
         return Cache::remember('ga_realtime', 60, function () {
 
             $client = new BetaAnalyticsDataClient([
-                'credentials' => storage_path(env('GA_CREDENTIALS'))
+                'credentials' => base_path(env('GA_CREDENTIALS'))
             ]);
 
             $request = new RunRealtimeReportRequest([
