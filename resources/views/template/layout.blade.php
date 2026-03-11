@@ -188,31 +188,31 @@
 
                 <a href="{{ url('/') }}"
                     class="px-4 py-2 rounded-lg
-        {{ request()->is('/') ? 'bg-red-600 text-white' : '' }}">
-                    HOME
-                </a>
+            {{ request()->is('/') ? 'bg-red-600 text-white' : '' }}">
+                        HOME
+                    </a>
 
-                <a href="{{ url('about-us') }}"
-                    class="px-4 py-2 rounded-lg
-        {{ request()->is('about-us') ? 'bg-red-600 text-white' : '' }}">
-                    ABOUT
-                </a>
+                    <a href="{{ url('about-us') }}"
+                        class="px-4 py-2 rounded-lg
+            {{ request()->is('about-us') ? 'bg-red-600 text-white' : '' }}">
+                        ABOUT
+                    </a>
 
-                <a href="{{ url('artikel') }}"
-                    class="px-4 py-2 rounded-lg
-        {{ request()->is('artikel') ? 'bg-red-600 text-white' : '' }}">
-                    ARTIKEL
-                </a>
+                    <a href="{{ url('artikel') }}"
+                        class="px-4 py-2 rounded-lg
+            {{ request()->is('artikel') ? 'bg-red-600 text-white' : '' }}">
+                        ARTIKEL
+                    </a>
 
-                <a href="{{ url('project') }}"
-                    class="px-4 py-2 rounded-lg
-        {{ request()->is('project') ? 'bg-red-600 text-white' : '' }}">
-                    PROJECT
-                </a>
+                    <a href="{{ url('project') }}"
+                        class="px-4 py-2 rounded-lg
+            {{ request()->is('project') ? 'bg-red-600 text-white' : '' }}">
+                        PROJECT
+                    </a>
 
-                <a href="{{ url('contact-us') }}"
-                    class="px-4 py-2 rounded-lg
-        {{ request()->is('contact-us') ? 'bg-red-600 text-white' : '' }}">
+                    <a href="{{ url('contact-us') }}"
+                        class="px-4 py-2 rounded-lg
+            {{ request()->is('contact-us') ? 'bg-red-600 text-white' : '' }}">
                     CONTACT
                 </a>
 
@@ -366,6 +366,8 @@
         </a>
 
     </div>
+
+    <x-visitor></x-visitor>
 
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
 </body>
