@@ -9,17 +9,17 @@
         <div class="space-y-1">
             <div class="flex justify-between">
                 <span>Today</span>
-                <span>{{ $visitorsToday ?? '-' }}</span>
+                <span>{{ $todayVisitors ?? '-' }}</span>
             </div>
 
             <div class="flex justify-between">
                 <span>Yesterday</span>
-                <span>{{ $visitorsYesterday ?? '-' }}</span>
+                <span>{{ $yesterdayVisitors ?? '-' }}</span>
             </div>
 
             <div class="flex justify-between">
                 <span>Last 7 Days</span>
-                <span>{{ $visitors7Days ?? '-' }}</span>
+                <span>{{ $last7DaysVisitors ?? '-' }}</span>
             </div>
         </div>
 
