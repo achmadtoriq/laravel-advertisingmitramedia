@@ -23,8 +23,17 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload hasil build
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: public/build
+        # 🔥 TARUH DI SINI
+      - name: Commit build
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add public/build
+          git commit -m "build assets" || echo "no changes"
+          git push
+
+     # - name: Upload hasil build
+     #   uses: actions/upload-artifact@v4
+     #   with:
+     #     name: build
+     #     path: public/build
