@@ -67,3 +67,7 @@ html {
 .article-card:hover img {
     transform: scale(1.08);
 }
+
+.done {
+    transform: scale(1.08);
+}
