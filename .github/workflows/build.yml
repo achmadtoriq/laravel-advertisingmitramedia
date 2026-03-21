@@ -29,7 +29,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add public/build
-          git commit -m "build assets" || echo "no changes"
+          git commit -m "build assets test" || echo "not changes"
           git push
 
      # - name: Upload hasil build
