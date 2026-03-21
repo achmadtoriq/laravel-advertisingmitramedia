@@ -3,7 +3,7 @@
     <x-slot:title>Jasa Neon Box & Papan Reklame Surabaya | Mitramedia Adv</x-slot:title>
     <x-slot:description>Jasa neon box dan papan reklame Surabaya dengan desain profesional, harga terjangkau, dan
         pemasangan berkualitas untuk toko, cafe, dan perusahaan.</x-slot:description>
-    <x-slot:keyword>jasa neon box surabaya, jasa pembuatan neon box, neon box murah, papan reklame surabaya, jasa
+    <x-slot:keyword>jasa neon box surabaya, jasa pembuatan neon box, neon box murah, billboard, papan reklame surabaya, jasa
         reklame surabaya, huruf timbul surabaya</x-slot:keyword>
 
     <x-slot:OgMeta>
