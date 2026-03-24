@@ -12,6 +12,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # ✅ Setup PHP (INI PENTING BANGET)
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+
+      # ✅ Install Composer dependencies
+      - name: Install Composer
+        run: composer install --no-dev --optimize-autoloader
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -28,8 +38,8 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add public/build
-          git commit -m "build assets test" || echo "not changes"
+          git add public/build vendor composer.lock
+          git commit -m "build assets + vendor" || echo "no changes"
           git push
 
      # - name: Upload hasil build
