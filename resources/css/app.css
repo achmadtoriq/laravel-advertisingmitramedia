@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -70,4 +71,18 @@ html {
 
 .done {
     transform: scale(1.08);
+}
+
+.ts-control {
+    min-height: 42px !important;
+    padding: 8px 12px !important;
+    border: none !important;
+}
+
+.ts-wrapper.multi .ts-control {
+    padding: 6px 10px !important;
+}
+
+.ts-control input {
+    margin: 0 !important;
 }

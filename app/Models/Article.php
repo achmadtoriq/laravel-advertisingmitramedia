@@ -14,7 +14,9 @@ class Article extends Model
         'image',
         'excerpt',
         'content',
-        'views'
+        'views',
+        'seo_title',
+        'seo_description'
     ];
 
     public function tags()

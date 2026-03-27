@@ -1,20 +1,28 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Main;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+/* Dashboard */
+Route::get('/login', [AuthController::class, "index"])->name('login');
+Route::post('/login',[AuthController::class,'authenticate']);
+Route::post('/logout', [AuthController::class,'logout']);
+Route::middleware('auth')->prefix('admin')->group(function(){
 
+    Route::get('/dashboard', [DashboardController::class, "index"]);
+    Route::resource('/article', ArticleController::class);
+    Route::post('/article/upload-image', [ArticleController::class,'upload_image_article']);
 
-// Route::prefix('agen-pulsa')->group(function () {
-//     Route::get('/', [HomeController::class, "index"]);
-//     Route::get('/{provider}', [HomeController::class, "index"]);
-// });
+    Route::get('/product', [DashboardController::class, "produk_menu"]);
+    Route::get('/setting', [DashboardController::class, "setting_menu"]);
 
+});
 
+/* Landing */
 Route::get('/', [Main::class, "index"]);
 Route::get('/about-us', [Main::class, "about"]);
 Route::get('/artikel', [Main::class, "artikel"]);

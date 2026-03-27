@@ -1,7 +1,6 @@
 <x-layout>
-    <x-slot:title>Hubungi Mitramedia Advertising | Jasa Reklame Surabaya</x-slot:title>
-    <x-slot:description>Hubungi Mitramedia Advertising untuk jasa neon box, papan reklame, dan huruf timbul di Surabaya.
-        Konsultasi desain reklame profesional untuk bisnis Anda.</x-slot:description>
+    <x-slot:title>{{ $article['seo_title'] ?? 'Artikel Mitramedia Arvertising'}}</x-slot:title>
+    <x-slot:description>{{ $article['seo_description'] ?? 'Artikel Mitramedia Arvertising' }}</x-slot:description>
     <x-slot:keyword>portfolio neon box surabaya, project papan reklame surabaya, huruf timbul surabaya, jasa reklame
         surabaya, contoh neon box surabaya</x-slot:keyword>
 
@@ -59,7 +58,56 @@
 
 
         {{-- Content --}}
-        <div class="prose max-w-none">
+        <div
+            class="prose max-w-none
+                    prose-headings:font-bold
+                    prose-h1:text-3xl
+                    prose-h2:text-2xl
+                    prose-h3:text-xl
+
+                    prose-p:text-gray-700
+
+                    prose-a:text-blue-600
+                    prose-a:no-underline
+                    hover:prose-a:underline
+
+                    prose-ul:list-disc
+                    prose-ul:pl-5
+
+                    prose-li:ml-5
+
+                    prose-ol:list-decimal
+                    prose-ol:pl-5
+
+                    prose-li:marker:text-gray-500
+
+                    prose-img:rounded-lg
+                    prose-img:shadow
+                    prose-img:my-4
+                    prose-img:mx-auto
+
+                    prose-blockquote:border-l-4
+                    prose-blockquote:border-gray-300
+                    prose-blockquote:pl-4
+                    prose-blockquote:text-gray-600
+
+                    prose-strong:text-gray-900
+                    prose-strong:font-semibold
+
+                    prose-table:border
+                    prose-table:border-gray-300
+                    prose-th:bg-gray-100
+                    prose-th:p-2
+                    prose-td:p-2
+
+                    prose-code:bg-gray-100
+                    prose-code:px-1
+                    prose-code:rounded
+
+                    prose-pre:bg-gray-900
+                    prose-pre:text-white
+                    prose-pre:rounded-lg
+                    prose-pre:p-4">
 
             {!! $article['content'] !!}
 

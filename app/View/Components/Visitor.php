@@ -18,10 +18,10 @@ class Visitor extends Component
      */
     public function __construct(GoogleAnalyticsService $analytics)
     {
-        $this->realtimeUsers = $analytics->getRealtimeUsers();
-        $this->todayVisitors = $analytics->getTodayVisitors();
-        $this->yesterdayVisitors = $analytics->getYesterdayVisitors();
-        $this->last7DaysVisitors = $analytics->getLast7DaysVisitors();
+        // $this->realtimeUsers = $analytics->getRealtimeUsers();
+        // $this->todayVisitors = $analytics->getTodayVisitors();
+        // $this->yesterdayVisitors = $analytics->getYesterdayVisitors();
+        // $this->last7DaysVisitors = $analytics->getLast7DaysVisitors();
     }
 
     /**

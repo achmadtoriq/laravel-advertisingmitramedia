@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('excerpt')->nullable();
             $table->longText('content')->nullable();
             $table->integer('views')->default(0);
+            $table->text('seo_description')->nullable();
+            $table->string('seo_title')->nullable();
             $table->timestamps();
         });
     }

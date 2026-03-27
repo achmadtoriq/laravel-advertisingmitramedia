@@ -80,7 +80,7 @@
                 <a href="{{ route('artikel.detail', $articles->first()['slug']) }}"
                     class="grid md:grid-cols-2 bg-white shadow-xl rounded-2xl overflow-hidden">
 
-                    <img src="{{ $articles->first()['image'] }}" class="h-full object-cover">
+                    <img src="{{ $articles->first()['image'] ?? asset("/storage/".$articles->first()['image']) }}" class="h-full object-cover">
 
                     <div class="p-10">
 
@@ -130,7 +130,7 @@ a.title.toLowerCase().includes(search.toLowerCase()) &&
                     <a :href="'/artikel/' + article.slug"
                         class="article-card bg-white rounded-xl shadow-lg overflow-hidden">
 
-                        <img :src="article.image" class="w-full h-48 object-cover">
+                        <img :src=" article.image ?? '/storage/' + article.image" class="w-full h-48 object-cover">
 
                         <div class="p-6">
 
@@ -170,7 +170,7 @@ a.title.toLowerCase().includes(search.toLowerCase()) &&
                 @foreach ($articles->sortByDesc('views')->take(5) as $article)
                     <a href="{{ route('artikel.detail', $article['slug']) }}" class="flex gap-4 items-center">
 
-                        <img src="{{ $article['image'] }}" class="w-20 h-16 object-cover rounded">
+                        <img src="{{ $articles->first()['image'] ?? asset("/storage/".$article['image']) }}" class="w-20 h-16 object-cover rounded">
 
                         <p class="text-sm font-semibold">
 

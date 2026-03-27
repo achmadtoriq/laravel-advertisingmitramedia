@@ -29,6 +29,9 @@ class Main extends Controller
         ->where('slug', $slug)
         ->firstOrFail();
 
+        // 🔥 tambah views +1
+        $article->increment('views');
+
         $data = [
             'title' => $article->title,
             'slug' => $article->slug,
@@ -36,7 +39,10 @@ class Main extends Controller
             'excerpt' => $article->excerpt,
             'content' => $article->content,
             'views' => $article->views,
-            'tags' => $article->tags->pluck('name')->toArray()
+            'tags' => $article->tags->pluck('name')->toArray(),
+            'seo_description' => $article->seo_description,
+            'seo_title' => $article->seo_title
+
         ];
 
         abort_if(!$article, 404);
