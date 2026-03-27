@@ -26,6 +26,7 @@ class ProjectController extends Controller
             'title' => 'required|max:255',
             'slug' => 'nullable|unique:projects,slug',
             'category' => 'required|in:neonbox,billboard,huruf-timbul,indoor-outdoor',
+            'location' => 'required|max:255',
             'cropped_image' => 'nullable'
         ]);
 

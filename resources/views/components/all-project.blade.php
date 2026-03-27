@@ -7,12 +7,12 @@
             @foreach ($projects as $project)
                 <div class="portfolio-item {{ $project->category }} break-inside-avoid" data-aos="fade-up">
 
-                    <a href="{{ asset('assets/images/project/'.$project->image) }}" data-fancybox="gallery">
+                    <a href="{{ $project->image }}" data-fancybox="gallery">
 
                         <div
                             class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-500">
 
-                            <img loading="lazy" src="{{ asset('assets/images/project/'.$project->image) }}"
+                            <img loading="lazy" src="{{ $project->image }}"
                                 class="w-full object-cover group-hover:scale-110 transition duration-700" alt="{{ $project->title }}">
 
                             <div

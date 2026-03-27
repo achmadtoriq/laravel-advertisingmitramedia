@@ -27,9 +27,7 @@
             <!-- LOGO -->
             <div class="h-16 flex items-center justify-center">
 
-                <span x-show="open" class="font-bold text-lg tracking-wide">
-                    CMS
-                </span>
+                <img x-show="open" src="http://localhost:8000/assets/images/mitramedia.webp" class="mx-auto h-10" alt="" srcset="">
 
                 <i x-show="!open" class="fa-solid fa-cube text-gray-600"></i>
 
@@ -69,12 +67,20 @@
                     Admin Dashboard
                 </h1>
 
-                <form method="POST" action="/logout">
-                    @csrf
-                    <button class="text-red-500 text-sm hover:underline cursor-pointer">
-                        <i class="fa-solid fa-power-off"></i>
-                    </button>
-                </form>
+                <div class="flex items-center gap-4">
+
+                    <!-- Nama User -->
+                    <span class="text-sm font-medium text-gray-700">
+                        {{ auth()->user()->name }}
+                    </span>
+
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <button class="text-red-500 text-sm hover:underline cursor-pointer">
+                            <i class="fa-solid fa-power-off"></i>
+                        </button>
+                    </form>
+                </div>
 
             </header>
 

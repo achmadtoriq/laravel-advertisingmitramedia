@@ -32,7 +32,7 @@ class Sidemenu extends Component
             ]
         ],
         [
-            'name' => 'Produk',
+            'name' => 'Project',
             'icon' => 'fa-solid fa-box',
             'url' => '/admin/projects'
         ],

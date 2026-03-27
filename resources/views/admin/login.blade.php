@@ -5,9 +5,7 @@
         <!-- logo -->
         <div class="text-center mb-8">
 
-            <h1 class="text-3xl font-bold tracking-tight text-gray-800">
-                CMS Admin
-            </h1>
+            <img src="http://localhost:8000/assets/images/mitramedia.webp" class="mx-auto" alt="" srcset="">
 
             <p class="text-gray-500 text-sm mt-2">
                 Secure access to dashboard
@@ -91,7 +89,7 @@
 
             <!-- BUTTON -->
             <button type="submit"
-                class="w-full py-3 rounded-xl bg-gradient-to-r from-red-500 to-orange-500
+                class="w-full py-3 rounded-xl bg-gradient-to-r from-red-500 to-orange-500 cursor-pointer
     text-white font-medium shadow-lg hover:scale-[1.02] transition
     flex items-center justify-center gap-2">
 
@@ -113,7 +111,7 @@
 
 
         <div class="text-center text-xs text-gray-400 mt-8">
-            Mitramedia Advertising CMS
+            Mitramedia Advertising
         </div>
 
     </div>
