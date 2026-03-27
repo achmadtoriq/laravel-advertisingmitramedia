@@ -58,4 +58,26 @@ class ProjectController extends Controller
         return redirect()->route('projects.index')
             ->with('success', 'Project berhasil ditambahkan');
     }
+
+    public function destroy(Project $project)
+    {
+        if ($project->image) {
+
+            // ambil path dari URL
+            $path = parse_url($project->image, PHP_URL_PATH);
+
+            // hapus "/storage/" dari URL
+            $path = str_replace('/storage/', '', $path);
+
+            // sekarang jadi: projects/image.jpg
+            Storage::disk('public')->delete($path);
+        }
+
+        $project->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Project berhasil dihapus'
+        ]);
+    }
 }
