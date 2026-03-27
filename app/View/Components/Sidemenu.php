@@ -34,7 +34,7 @@ class Sidemenu extends Component
         [
             'name' => 'Produk',
             'icon' => 'fa-solid fa-box',
-            'url' => '/admin/products'
+            'url' => '/admin/projects'
         ],
         [
             'name' => 'Settings',

@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Main;
+use App\Http\Controllers\ProjectController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::resource('/article', ArticleController::class);
     Route::post('/article/upload-image', [ArticleController::class,'upload_image_article']);
 
-    Route::get('/product', [DashboardController::class, "produk_menu"]);
+    Route::resource('/projects', ProjectController::class);
     Route::get('/setting', [DashboardController::class, "setting_menu"]);
 
 });

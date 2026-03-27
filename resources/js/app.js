@@ -20,7 +20,6 @@ const lenis = new Lenis({
 });
 
 function raf(time) {
-    console.log("test");
     lenis.raf(time);
     requestAnimationFrame(raf);
 }
