@@ -27,7 +27,7 @@
             <!-- LOGO -->
             <div class="h-16 flex items-center justify-center">
 
-                <img x-show="open" src="http://localhost:8000/assets/images/mitramedia.webp" class="mx-auto h-10" alt="" srcset="">
+                <img x-show="open" src="{{ asset('assets/images/mitramedia.webp')}}" class="mx-auto h-10" alt="" srcset="">
 
                 <i x-show="!open" class="fa-solid fa-cube text-gray-600"></i>
 

@@ -5,7 +5,7 @@
         <!-- logo -->
         <div class="text-center mb-8">
 
-            <img src="http://localhost:8000/assets/images/mitramedia.webp" class="mx-auto" alt="" srcset="">
+            <img src="{{ asset('assets/images/mitramedia.webp')}}" class="mx-auto" alt="" srcset="">
 
             <p class="text-gray-500 text-sm mt-2">
                 Secure access to dashboard
