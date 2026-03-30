@@ -25,7 +25,7 @@
                 Neon Box
             </button>
 
-            <button class="filter-btn" data-filter="letter">
+            <button class="filter-btn" data-filter="huruf-timbul">
                 Letter Timbul
             </button>
 
