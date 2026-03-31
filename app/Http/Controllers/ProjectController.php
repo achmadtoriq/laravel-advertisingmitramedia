@@ -12,12 +12,12 @@ class ProjectController extends Controller
     function index()
     {
         $project = Project::latest()->paginate(10);
-        return view('admin.project-menu', compact('project'));
+        return view('admin.project.project-menu', compact('project'));
     }
 
     public function create()
     {
-        return view('admin.project-create');
+        return view('admin.project.project-create');
     }
 
     public function store(Request $request)
