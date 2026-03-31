@@ -20,16 +20,17 @@ class Sidemenu extends Component
         [
             'name' => 'Artikel',
             'icon' => 'fa-solid fa-newspaper',
-            'submenu' => [
-                [
-                    'name' => 'List Artikel',
-                    'url' => '/admin/article'
-                ],
-                [
-                    'name' => 'Tambah Artikel',
-                    'url' => '/admin/article/create'
-                ]
-            ]
+            'url' => '/admin/article'
+            // 'submenu' => [
+            //     [
+            //         'name' => 'List Artikel',
+            //         'url' => '/admin/article'
+            //     ],
+            //     [
+            //         'name' => 'Tambah Artikel',
+            //         'url' => '/admin/article/create'
+            //     ]
+            // ]
         ],
         [
             'name' => 'Project',

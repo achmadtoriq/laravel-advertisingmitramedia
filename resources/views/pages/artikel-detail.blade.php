@@ -57,8 +57,8 @@
         <img src="{{ $article['image'] }}" class="w-full rounded-xl mb-12 shadow-lg">
 
 
-        {{-- Content --}}
-        <div
+        {{-- Content Tiny MCE --}}
+        {{-- <div
             class="prose max-w-none
                     prose-headings:font-bold
                     prose-h1:text-3xl
@@ -111,6 +111,10 @@
 
             {!! $article['content'] !!}
 
+        </div> --}}
+
+        <div class="ck-content">
+            {!! $article['content'] !!}
         </div>
 
 

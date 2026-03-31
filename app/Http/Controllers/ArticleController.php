@@ -12,21 +12,21 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::latest()->paginate(5);
-        return view('admin.article-menu', compact('articles'));
+        return view('admin.artikel.article-menu', compact('articles'));
     }
 
     public function create()
     {
         $tags = Tag::all();
-        return view('admin.article-create', compact('tags'));
+        return view('admin.artikel.article-create', compact('tags'));
     }
 
     public function edit($id)
     {
         $article = Article::findOrFail($id);
         $tags = Tag::all();
-        
-        return view('admin.article-edit', compact('article', 'tags'));
+
+        return view('admin.artikel.article-edit', compact('article', 'tags'));
     }
 
     public function store(Request $request)
@@ -71,6 +71,7 @@ class ArticleController extends Controller
         return redirect('/admin/article')->with('success', 'Artikel berhasil dibuat');
     }
 
+    /* Tiny MCE
     public function upload_image_article(Request $request)
     {
         if ($request->hasFile('file')) {
@@ -85,6 +86,31 @@ class ArticleController extends Controller
                 'location' => url('storage/' . $path)
             ]);
         }
+    }
+    */
+
+    public function upload_image_article(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+
+            $file = $request->file('upload');
+
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+            $path = $file->storeAs('articles', $filename, 'public');
+
+            return response()->json([
+                'uploaded' => true,
+                'url' => asset('storage/' . $path)
+            ], 200, [], JSON_UNESCAPED_SLASHES);
+        }
+
+        return response()->json([
+            'uploaded' => false,
+            'error' => [
+                'message' => 'Upload gagal'
+            ]
+        ], 400);
     }
 
 

@@ -53,11 +53,11 @@
                             {{ $article->created_at->format('d M Y') }}
                         </td>
 
-                        <td class="px-4 py-3 text-right space-x-2">
+                        <td class="px-4 py-6 text-right space-x-2">
 
-                            <a href="/admin/article/{{ $article->id }}/edit" class="text-blue-500 cursor-pointer px-3 py-2 border rounded-lg hover:underline">
+                            {{-- <a href="/admin/article/{{ $article->id }}/edit" class="text-blue-500 cursor-pointer px-3 py-2 border rounded-lg hover:underline">
                                 Edit
-                            </a>
+                            </a> --}}
 
                             <a href="#" onclick="deleteArticle({{ $article->id }}, this)"
                                 class="text-red-500 cursor-pointer px-3 py-2 border rounded-lg">

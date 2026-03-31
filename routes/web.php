@@ -19,7 +19,7 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::post('/article/upload-image', [ArticleController::class,'upload_image_article']);
 
     Route::resource('/projects', ProjectController::class);
-    Route::get('/setting', [DashboardController::class, "setting_menu"]);
+    Route::get('/settings', [DashboardController::class, "setting_menu"]);
 
 });
 
@@ -33,21 +33,24 @@ Route::get('/contact-us', [Main::class, "contact"]);
 
 Route::get('/sitemap.xml', function () {
 
-    $pages = [
-        url('/'),
-        url('/about-us'),
-        url('/artikel'),
-        url('/project'),
-        url('/contact-us')
-    ];
+    $pages = collect([
+        ['loc' => url('/'), 'lastmod' => now()->toAtomString()],
+        ['loc' => url('/about-us'), 'lastmod' => now()->toAtomString()],
+        ['loc' => url('/artikel'), 'lastmod' => now()->toAtomString()],
+        ['loc' => url('/project'), 'lastmod' => now()->toAtomString()],
+        ['loc' => url('/contact-us'), 'lastmod' => now()->toAtomString()],
+    ]);
 
-    $articles = Article::pluck('slug')->map(function ($slug) {
-        return url('/artikel/' . $slug);
+    $articles = Article::get()->map(function ($article) {
+        return [
+            'loc' => url('/artikel/' . $article->slug),
+            'lastmod' => $article->updated_at->toAtomString()
+        ];
     });
 
-    $urls = collect($pages)->merge($articles);
+    $urls = $pages->merge($articles);
 
-    return response()->view('template.sitemap',  [
+    return response()->view('template.sitemap', [
         'urls' => $urls
     ])->header('Content-Type', 'text/xml');
 });

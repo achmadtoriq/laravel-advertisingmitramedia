@@ -24,75 +24,75 @@
 
     });
 
-    const image_upload = (blobInfo, progress) => new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.withCredentials = false;
-        xhr.open('POST', '/admin/article/upload-image');
-        xhr.setRequestHeader('X-CSRF-TOKEN', csrf.getAttribute('content'));
+    // const image_upload = (blobInfo, progress) => new Promise((resolve, reject) => {
+    //     const xhr = new XMLHttpRequest();
+    //     xhr.withCredentials = false;
+    //     xhr.open('POST', '/admin/article/upload-image');
+    //     xhr.setRequestHeader('X-CSRF-TOKEN', csrf.getAttribute('content'));
 
-        xhr.upload.onprogress = (e) => {
-            progress(e.loaded / e.total * 100);
-        };
+    //     xhr.upload.onprogress = (e) => {
+    //         progress(e.loaded / e.total * 100);
+    //     };
 
-        xhr.onload = () => {
-            if (xhr.status === 403) {
-                reject({
-                    message: 'HTTP Error: ' + xhr.status,
-                    remove: true
-                });
-                return;
-            }
+    //     xhr.onload = () => {
+    //         if (xhr.status === 403) {
+    //             reject({
+    //                 message: 'HTTP Error: ' + xhr.status,
+    //                 remove: true
+    //             });
+    //             return;
+    //         }
 
-            if (xhr.status < 200 || xhr.status >= 300) {
-                reject('HTTP Error: ' + xhr.status);
-                return;
-            }
+    //         if (xhr.status < 200 || xhr.status >= 300) {
+    //             reject('HTTP Error: ' + xhr.status);
+    //             return;
+    //         }
 
-            const json = JSON.parse(xhr.responseText);
+    //         const json = JSON.parse(xhr.responseText);
 
-            if (!json || typeof json.location != 'string') {
-                reject('Invalid JSON: ' + xhr.responseText);
-                return;
-            }
+    //         if (!json || typeof json.location != 'string') {
+    //             reject('Invalid JSON: ' + xhr.responseText);
+    //             return;
+    //         }
 
-            resolve(json.location);
-        };
+    //         resolve(json.location);
+    //     };
 
-        xhr.onerror = () => {
-            reject('Image upload failed due to a XHR Transport error. Code: ' + xhr.status);
-        };
+    //     xhr.onerror = () => {
+    //         reject('Image upload failed due to a XHR Transport error. Code: ' + xhr.status);
+    //     };
 
-        const formData = new FormData();
-        formData.append('file', blobInfo.blob(), blobInfo.filename());
+    //     const formData = new FormData();
+    //     formData.append('file', blobInfo.blob(), blobInfo.filename());
 
-        xhr.send(formData);
-    });
+    //     xhr.send(formData);
+    // });
 
-    tinymce.init({
-        selector: '#content',
-        height: 500,
-        plugins: 'image link lists table code preview',
-        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | link image | table | code preview',
+    // tinymce.init({
+    //     selector: '#content',
+    //     height: 500,
+    //     plugins: 'image link lists table code preview',
+    //     toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | link image | table | code preview',
 
-        license_key: 'gpl', // 🔥 WAJIB
-        promotion: false,
+    //     license_key: 'gpl', // 🔥 WAJIB
+    //     promotion: false,
 
-        image_title: true,
+    //     image_title: true,
 
-        automatic_uploads: true,
+    //     automatic_uploads: true,
 
-        images_upload_credentials: true,
+    //     images_upload_credentials: true,
 
-        paste_data_images: true,
-        images_upload_handler: image_upload,
+    //     paste_data_images: true,
+    //     images_upload_handler: image_upload,
 
-        invalid_attributes: 'data-section-id,data-start,data-end',
+    //     invalid_attributes: 'data-section-id,data-start,data-end',
 
-        // 🔥 INI WAJIB
-        relative_urls: false,
-        remove_script_host: false,
-        convert_urls: true,
-    });
+    //     // 🔥 INI WAJIB
+    //     relative_urls: false,
+    //     remove_script_host: false,
+    //     convert_urls: true,
+    // });
 
     document.addEventListener("DOMContentLoaded", function() {
         new TomSelect("#tags", {
