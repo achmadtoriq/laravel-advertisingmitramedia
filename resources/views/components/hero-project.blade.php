@@ -29,7 +29,7 @@
                 Letter Timbul
             </button>
 
-            <button class="filter-btn" data-filter="branding">
+            <button class="filter-btn" data-filter="indoor-outdoor">
                 Indoor Outdoor
             </button>
 
