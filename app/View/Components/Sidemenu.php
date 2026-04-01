@@ -37,11 +37,11 @@ class Sidemenu extends Component
             'icon' => 'fa-solid fa-box',
             'url' => '/admin/projects'
         ],
-        [
-            'name' => 'Settings',
-            'icon' => 'fa-solid fa-gear',
-            'url' => '/admin/settings'
-        ]
+        // [
+        //     'name' => 'Settings',
+        //     'icon' => 'fa-solid fa-gear',
+        //     'url' => '/admin/settings'
+        // ]
     ];
 
     public function __construct() {}
