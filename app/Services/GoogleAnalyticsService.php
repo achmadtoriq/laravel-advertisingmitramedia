@@ -103,4 +103,47 @@ class GoogleAnalyticsService
 
         return 0;
     }
+
+    public function getVisitorsChart($days = 7)
+    {
+        return Cache::remember('ga_chart_' . $days, 600, function () use ($days) {
+
+            $client = new BetaAnalyticsDataClient([
+                'credentials' => base_path(env('GA_CREDENTIALS'))
+            ]);
+
+            $request = new RunReportRequest([
+                'property' => 'properties/' . env('GA_PROPERTY_ID'),
+                'date_ranges' => [
+                    new DateRange([
+                        'start_date' => $days . 'daysAgo',
+                        'end_date' => 'today',
+                    ])
+                ],
+                'metrics' => [
+                    new Metric([
+                        'name' => 'activeUsers'
+                    ])
+                ],
+                'dimensions' => [
+                    new \Google\Analytics\Data\V1beta\Dimension([
+                        'name' => 'date'
+                    ])
+                ]
+            ]);
+
+            $response = $client->runReport($request);
+
+            $data = [];
+
+            foreach ($response->getRows() as $row) {
+                $data[] = [
+                    'date' => $row->getDimensionValues()[0]->getValue(),
+                    'users' => (int) $row->getMetricValues()[0]->getValue(),
+                ];
+            }
+
+            return $data;
+        });
+    }
 }

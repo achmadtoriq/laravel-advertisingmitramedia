@@ -9,8 +9,10 @@ use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /* Dashboard */
-Route::get('/login', [AuthController::class, "index"])->name('login');
-Route::post('/login',[AuthController::class,'authenticate']);
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, "index"])->name('login');
+    Route::post('/login',[AuthController::class,'authenticate']);
+});
 Route::post('/logout', [AuthController::class,'logout']);
 Route::middleware('auth')->prefix('admin')->group(function(){
 
