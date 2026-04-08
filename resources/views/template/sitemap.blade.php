@@ -4,7 +4,8 @@
 
     @foreach ($urls as $page)
         <url>
-            <loc>{{ $page }}</loc>
+            <loc>{{ $page['loc'] }}</loc>
+            <lastmod>{{ $page['lastmod'] }}</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.9</priority>
         </url>
