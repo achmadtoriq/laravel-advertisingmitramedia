@@ -170,7 +170,7 @@ a.title.toLowerCase().includes(search.toLowerCase()) &&
                 @foreach ($articles->sortByDesc('views')->take(5) as $article)
                     <a href="{{ route('artikel.detail', $article['slug']) }}" class="flex gap-4 items-center">
 
-                        <img src="{{ $articles->first()['image'] ?? asset("/storage/".$article['image']) }}" class="w-20 h-16 object-cover rounded">
+                        <img src="{{ asset("/storage/".$article['image']) }}" class="w-20 h-16 object-cover rounded">
 
                         <p class="text-sm font-semibold">
 
