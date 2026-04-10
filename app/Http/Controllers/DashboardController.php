@@ -11,10 +11,10 @@ class DashboardController extends Controller
 {
     public function index(GoogleAnalyticsService $ga)
     {
-        $chart = $ga->getVisitorsChart(7);
+        $chart = collect($ga->getVisitorsChart(7))->sortBy('date')->values();
 
         $labels = collect($chart)->map(function ($item) {
-            return Carbon::createFromFormat('Ymd', $item['date'])->format('d/m');
+            return Carbon::createFromFormat('Ymd', $item['date'])->format('d M');
         });
 
         $data = collect($chart)->pluck('users');
