@@ -20,53 +20,98 @@
 
     </div>
 
-
     {{-- 📊 GRAFIK --}}
     <div class="bg-white shadow rounded-xl p-6 mb-6">
         <h2 class="text-lg font-semibold mb-4">Traffic 7 Hari Terakhir</h2>
-        <canvas id="visitorChart" height="100"></canvas>
+
+        <div class="h-64">
+            <canvas id="visitorChart"></canvas>
+        </div>
     </div>
 
-
-    {{-- 🎉 WELCOME (diperkecil) --}}
+    {{-- 🎉 WELCOME --}}
     <div class="text-center mt-10 opacity-70">
         <img src="{{ asset('assets/images/mitramedia.webp') }}" class="mx-auto mb-4 w-40" alt="">
         <h1 class="text-xl font-semibold">Dashboard Mitramedia Advertising</h1>
     </div>
 
-</x-layout-dashboard>
+    {{-- 📦 CHART SCRIPT --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('visitorChart').getContext('2d');
 
-<script>
-    const chartData = @json($chart);
+        // 🎨 Gradient
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, 'rgba(59, 130, 246, 0.4)');
+        gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
 
-    const labels = chartData.map(item => {
-        const d = item.date;
-        return `${d.substr(6,2)}/${d.substr(4,2)}`;
-    });
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: @json($labels), // contoh: ['01/04','02/04']
+                datasets: [{
+                    label: 'Visitors',
+                    data: @json($data), // contoh: [10,20,15]
+                    borderColor: '#3b82f6',
+                    backgroundColor: gradient,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 3,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: '#3b82f6',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
 
-    const values = chartData.map(item => item.users);
+                animation: {
+                    duration: 1000,
+                    easing: 'easeOutQuart'
+                },
 
-    const ctx = document.getElementById('visitorChart').getContext('2d');
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#111827',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        padding: 10,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return ' ' + context.raw + ' visitors';
+                            }
+                        }
+                    }
+                },
 
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Visitors',
-                data: values,
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#6b7280'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e5e7eb'
+                        },
+                        ticks: {
+                            color: '#6b7280',
+                            stepSize: 2
+                        }
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
+
+</x-layout-dashboard>
