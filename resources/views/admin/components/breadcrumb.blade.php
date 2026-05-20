@@ -3,7 +3,7 @@
     $path = '/admin';
 @endphp
 
-<div class="mb-6 flex items-center gap-2 text-sm text-gray-500">
+<div class="flex items-center gap-2 text-sm text-gray-500">
 
     <a href="/admin/dashboard" class="hover:text-gray-900 font-medium">
         Dashboard

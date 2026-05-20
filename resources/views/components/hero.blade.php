@@ -16,7 +16,6 @@
     <div class="relative max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
 
         <!-- LEFT CONTENT -->
-        <!-- LEFT CONTENT -->
         <div class="text-white" x-data="{ show: false }" x-init="setTimeout(() => show = true, 200)">
 
             <!-- BADGE -->

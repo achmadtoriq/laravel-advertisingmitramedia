@@ -1,14 +1,12 @@
 <x-layout>
-    <x-slot:title>Hubungi Mitramedia Advertising | Jasa Reklame Surabaya</x-slot:title>
-    <x-slot:description>Hubungi Mitramedia Advertising untuk jasa neon box, papan reklame, dan huruf timbul di Surabaya.
-        Konsultasi desain reklame profesional untuk bisnis Anda.</x-slot:description>
-    <x-slot:keyword>portfolio neon box surabaya, project papan reklame surabaya, huruf timbul surabaya, jasa reklame
-        surabaya, contoh neon box surabaya</x-slot:keyword>
+    <x-slot:title>Artikel Mitramedia Advertising | Jasa Reklame Surabaya</x-slot:title>
+    <x-slot:description>Tips neon box, papan reklame, huruf timbul, dan media promosi outdoor dari Mitramedia Advertising Surabaya.</x-slot:description>
+    <x-slot:keyword>artikel neon box surabaya, tips reklame surabaya, papan reklame surabaya, huruf timbul surabaya, jasa reklame surabaya</x-slot:keyword>
 
     <x-slot:OgMeta>
-        <meta property="og:title" content="Jasa Reklame Surabaya">
+        <meta property="og:title" content="Artikel Mitramedia Advertising">
         <meta property="og:description"
-            content="Hubungi Mitramedia Advertising untuk jasa neon box, papan reklame, dan huruf timbul di Surabaya. Konsultasi desain reklame profesional untuk bisnis Anda.">
+            content="Tips neon box, papan reklame, huruf timbul, dan media promosi outdoor dari Mitramedia Advertising Surabaya.">
         <meta property="og:image" content="{{ asset('assets/images/about-img.webp') }}">
         <meta property="og:url" content="{{ url()->current() }}">
         <meta property="og:type" content="website">
@@ -16,9 +14,9 @@
 
     <x-slot:TwitterMeta>
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Jasa Reklame Surabaya">
+        <meta name="twitter:title" content="Artikel Mitramedia Advertising">
         <meta name="twitter:description"
-            content="Hubungi Mitramedia Advertising untuk jasa neon box, papan reklame, dan huruf timbul di Surabaya. Konsultasi desain reklame profesional untuk bisnis Anda.">
+            content="Tips neon box, papan reklame, huruf timbul, dan media promosi outdoor dari Mitramedia Advertising Surabaya.">
         <meta name="twitter:image" content="{{ asset('assets/images/about-img.webp') }}">
     </x-slot:TwitterMeta>
 

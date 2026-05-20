@@ -84,7 +84,7 @@
                 "/assets/images/partner/logo-sharp.webp",
                 "/assets/images/partner/logo-shunda-plafon.webp",
                 "/assets/images/partner/logo-ssa.webp",
-                "/assets/images/partner/logo-ubs-webp",
+                "/assets/images/partner/logo-ubs.webp",
                 "/assets/images/partner/logo-vivo.webp"
             ],
 

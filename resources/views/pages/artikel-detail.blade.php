@@ -5,20 +5,18 @@
         surabaya, contoh neon box surabaya</x-slot:keyword>
 
     <x-slot:OgMeta>
-        <meta property="og:title" content="Jasa Reklame Surabaya">
-        <meta property="og:description"
-            content="Hubungi Mitramedia Advertising untuk jasa neon box, papan reklame, dan huruf timbul di Surabaya. Konsultasi desain reklame profesional untuk bisnis Anda.">
-        <meta property="og:image" content="{{ asset('assets/images/about-img.webp') }}">
+        <meta property="og:title" content="{{ $article['seo_title'] ?? $article['title'] }}">
+        <meta property="og:description" content="{{ $article['seo_description'] ?? $article['excerpt'] }}">
+        <meta property="og:image" content="{{ $article['image'] }}">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     </x-slot:OgMeta>
 
     <x-slot:TwitterMeta>
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Jasa Reklame Surabaya">
-        <meta name="twitter:description"
-            content="Hubungi Mitramedia Advertising untuk jasa neon box, papan reklame, dan huruf timbul di Surabaya. Konsultasi desain reklame profesional untuk bisnis Anda.">
-        <meta name="twitter:image" content="{{ asset('assets/images/about-img.webp') }}">
+        <meta name="twitter:title" content="{{ $article['seo_title'] ?? $article['title'] }}">
+        <meta name="twitter:description" content="{{ $article['seo_description'] ?? $article['excerpt'] }}">
+        <meta name="twitter:image" content="{{ $article['image'] }}">
     </x-slot:TwitterMeta>
 
     <section class="max-w-4xl mx-auto px-6 py-20 my-16">
@@ -54,7 +52,8 @@
 
 
         {{-- Hero Image --}}
-        <img src="{{ $article['image'] }}" class="w-full rounded-xl mb-12 shadow-lg">
+        <img src="{{ $article['image'] }}" class="w-full rounded-xl mb-12 shadow-lg"
+            alt="{{ $article['title'] }}">
 
 
         {{-- Content Tiny MCE --}}
@@ -141,15 +140,18 @@
 
             <div class="flex gap-4">
 
-                <a href="#" class="px-4 py-2 bg-blue-500 text-white rounded">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank"
+                    class="px-4 py-2 bg-blue-500 text-white rounded">
                     Facebook
                 </a>
 
-                <a href="#" class="px-4 py-2 bg-green-500 text-white rounded">
+                <a href="https://api.whatsapp.com/send?text={{ urlencode($article['title'] . ' ' . url()->current()) }}" target="_blank"
+                    class="px-4 py-2 bg-green-500 text-white rounded">
                     WhatsApp
                 </a>
 
-                <a href="#" class="px-4 py-2 bg-black text-white rounded">
+                <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($article['title']) }}" target="_blank"
+                    class="px-4 py-2 bg-black text-white rounded">
                     Twitter
                 </a>
 

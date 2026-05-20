@@ -32,6 +32,7 @@
 
             <input id="slug" name="slug" type="text" value="{{ old('slug') }}"
                 class="w-full border border-gray-300 rounded-sm px-4 py-2">
+            <p class="mt-1 text-xs text-gray-500">Kosongkan untuk membuat slug otomatis dari title.</p>
 
             @error('slug')
                 <p class="text-red-500 text-sm">{{ $message }}</p>
@@ -44,7 +45,7 @@
 
             <select id="tags" name="tags[]" multiple class="w-full rounded-sm border border-gray-300">
                 @foreach ($tags as $tag)
-                    <option value="{{ $tag->id }}">
+                    <option value="{{ $tag->id }}" @selected(in_array($tag->id, old('tags', [])))>
                         {{ $tag->name }}
                     </option>
                 @endforeach
@@ -78,8 +79,12 @@
             <label class="block text-sm font-medium mb-2">Content</label>
 
             <div class="ck-content">
-                <textarea id="editor" name="content"></textarea>
+                <textarea id="editor" name="content">{{ old('content') }}</textarea>
             </div>
+
+            @error('content')
+                <p class="text-red-500 text-sm">{{ $message }}</p>
+            @enderror
 
         </div>
 

@@ -38,7 +38,7 @@
                     <tr class="hover:bg-gray-50">
 
                         <td class="px-4 py-3">
-                            {{ $loop->iteration }}
+                            {{ $articles->firstItem() + $loop->index }}
                         </td>
 
                         <td class="px-4 py-3 font-medium">
@@ -53,14 +53,20 @@
                             {{ $article->created_at->format('d M Y') }}
                         </td>
 
-                        <td class="px-4 py-6 text-right space-x-2">
+                        <td class="px-4 py-6 text-right space-x-2 whitespace-nowrap">
 
-                            {{-- <a href="/admin/article/{{ $article->id }}/edit" class="text-blue-500 cursor-pointer px-3 py-2 border rounded-lg hover:underline">
+                            <a href="/admin/article/{{ $article->id }}/edit"
+                                class="text-blue-500 cursor-pointer px-3 py-2 border rounded-lg hover:bg-blue-50">
                                 Edit
-                            </a> --}}
+                            </a>
+
+                            <a href="{{ url('/artikel/' . $article->slug) }}" target="_blank"
+                                class="text-gray-600 cursor-pointer px-3 py-2 border rounded-lg hover:bg-gray-50">
+                                View
+                            </a>
 
                             <a href="#" onclick="deleteArticle({{ $article->id }}, this)"
-                                class="text-red-500 cursor-pointer px-3 py-2 border rounded-lg">
+                                class="text-red-500 cursor-pointer px-3 py-2 border rounded-lg hover:bg-red-50">
                                 Delete
                             </a>
 

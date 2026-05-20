@@ -5,30 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    @php
+        $defaultTitle = 'Jasa Neon Box Surabaya | Mitramedia Advertising';
+        $defaultDescription = 'Jasa neon box Surabaya profesional.';
+        $defaultKeywords = 'jasa neon box, jasa pembuatan neon box, neon box murah, papan reklame surabaya';
+        $slotTitle = isset($title) ? trim((string) $title) : null;
+        $slotDescription = isset($description) ? trim((string) $description) : null;
+        $slotKeywords = isset($keyword) ? trim((string) $keyword) : null;
+
+        $replaceSeoTokens = function (?string $value) use ($slotTitle, $slotDescription, $slotKeywords) {
+            if (! $value) {
+                return $value;
+            }
+
+            return str($value)->replace([
+                '{title}',
+                '{description}',
+                '{keywords}',
+                '{site}',
+            ], [
+                $slotTitle ?? '',
+                $slotDescription ?? '',
+                $slotKeywords ?? '',
+                'Mitramedia Advertising',
+            ])->value();
+        };
+
+        $seoTitle = $replaceSeoTokens($pageSeo?->meta_title) ?: $slotTitle ?: $defaultTitle;
+        $seoDescription = $replaceSeoTokens($pageSeo?->meta_description) ?: $slotDescription ?: $defaultDescription;
+        $seoKeywords = $replaceSeoTokens($pageSeo?->meta_keywords) ?: $slotKeywords ?: $defaultKeywords;
+        $seoRobots = $pageSeo?->robots ?: 'index, follow';
+
+        $ogTitle = $replaceSeoTokens($pageSeo?->og_title) ?: $seoTitle;
+        $ogDescription = $replaceSeoTokens($pageSeo?->og_description) ?: $seoDescription;
+        $ogImage = $pageSeo?->og_image;
+        $twitterTitle = $replaceSeoTokens($pageSeo?->twitter_title) ?: $seoTitle;
+        $twitterDescription = $replaceSeoTokens($pageSeo?->twitter_description) ?: $seoDescription;
+        $twitterImage = $pageSeo?->twitter_image ?: $ogImage;
+        $hasDatabaseMeta = (bool) $pageSeo;
+        $hasDatabaseOg = $hasDatabaseMeta || ($pageSeo && ($pageSeo->og_title || $pageSeo->og_description || $pageSeo->og_image));
+        $hasDatabaseTwitter = $hasDatabaseMeta || ($pageSeo && ($pageSeo->twitter_title || $pageSeo->twitter_description || $pageSeo->twitter_image));
+    @endphp
+
     {{-- Title --}}
-    <title>{{ $title ?? 'Jasa Neon Box Surabaya | Mitramedia Advertising' }}</title>
+    <title>{{ $seoTitle }}</title>
 
     {{-- Meta Description --}}
-    <meta name="description" content="{{ $description ?? 'Jasa neon box Surabaya profesional.' }}">
+    <meta name="description" content="{{ $seoDescription }}">
 
     {{-- Keywords --}}
-    <meta name="keywords"
-        content="{{ $keyword ?? 'jasa neon box, jasa pembuatan neon box, neon box murah, papan reklame surabaya' }}">
+    <meta name="keywords" content="{{ $seoKeywords }}">
 
     {{-- Author --}}
     <meta name="author" content="Mitra Media Advertising">
 
     {{-- Robots --}}
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="{{ $seoRobots }}">
 
     {{-- Canonical --}}
     <link rel="canonical" href="{{ url()->current() }}">
 
     {{-- Open Graph --}}
-    {{ $OgMeta ?? '' }}
+    @if ($hasDatabaseOg)
+        <meta property="og:title" content="{{ $ogTitle }}">
+        <meta property="og:description" content="{{ $ogDescription }}">
+        @if ($ogImage)
+            <meta property="og:image" content="{{ $ogImage }}">
+        @endif
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:type" content="website">
+    @else
+        {{ $OgMeta ?? '' }}
+    @endif
 
     {{-- Twitter Card --}}
-    {{ $TwitterMeta ?? '' }}
+    @if ($hasDatabaseTwitter)
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ $twitterTitle }}">
+        <meta name="twitter:description" content="{{ $twitterDescription }}">
+        @if ($twitterImage)
+            <meta name="twitter:image" content="{{ $twitterImage }}">
+        @endif
+    @else
+        {{ $TwitterMeta ?? '' }}
+    @endif
 
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('favicon.ico') }}">
@@ -41,7 +101,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     {{-- Structured Data SEO --}}
     @verbatim

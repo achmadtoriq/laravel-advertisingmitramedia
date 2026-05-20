@@ -1,67 +1,84 @@
 <div x-data="{
     search: '',
     category: 'all',
-    articles: @js($articles->items())
+    articles: @js($articles->items()),
+    filteredArticles() {
+        const term = this.search.toLowerCase().trim();
+
+        return this.articles.filter(article => {
+            const title = (article.title || '').toLowerCase();
+            const excerpt = (article.excerpt || '').toLowerCase();
+            const tags = article.tag_keys || [];
+
+            return (term === '' || title.includes(term) || excerpt.includes(term)) &&
+                (this.category === 'all' || tags.includes(this.category));
+        });
+    }
 }">
 
     {{-- SEARCH + FILTER --}}
     <section class="max-w-7xl mx-auto px-6 py-12">
 
-        <div class="flex flex-col md:flex-row gap-6 justify-between">
+        <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
 
-            <div class="relative w-full md:w-1/2">
-
-                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-
-                <input type="text" placeholder="Cari artikel..." x-model="search"
-                    class="w-full pl-12 pr-4 py-3
-                            border border-gray-200
-                            rounded-full
-                            bg-white
-                            shadow-sm
-                            transition
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-red-500/40
-                            focus:border-red-500
-                            placeholder:text-gray-400">
-
+            <div class="relative w-full md:max-w-md">
+                <!-- Icon Search -->
+                <i class="fa-solid fa-magnifying-glass
+                          absolute left-4 top-1/2 -translate-y-1/2
+                          text-gray-400 text-base
+                          pointer-events-none"></i>
+            
+                <!-- Input -->
+                <input
+                    type="text"
+                    placeholder="Cari artikel..."
+                    x-model="search"
+                    class="w-full h-14
+                           rounded-lg
+                           border border-gray-200
+                           bg-gray-50
+                           pl-12 pr-4
+                           text-sm leading-none text-gray-700
+                           placeholder:text-gray-400
+                           shadow-inner
+                           transition-all duration-200
+                           focus:bg-white
+                           focus:border-red-500
+                           focus:ring-2
+                           focus:ring-red-500/20
+                           focus:outline-none"
+                >
             </div>
 
-            <div class="flex gap-3">
+            <div class="flex min-w-0 flex-1 items-center md:justify-end">
 
-                <button @click="category='all'"
-                    :class="category === 'all'
-                        ?
-                        'bg-red-500 text-white' :
-                        'bg-gray-100 text-gray-700'"
-                    class="px-4 py-2 rounded-full transition cursor-pointer">
+                <div class="flex max-w-full flex-wrap gap-1.5 md:justify-end md:gap-2">
 
-                    Semua
+                    <button @click="category='all'"
+                        :class="category === 'all'
+                            ?
+                            'bg-red-600 text-white shadow-sm' :
+                            'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+                        class="h-8 rounded-lg px-3 text-xs font-semibold transition cursor-pointer sm:h-9 sm:text-sm md:h-10 md:px-4">
 
-                </button>
+                        Semua
 
-                <button @click="category='neon box'"
-                    :class="category === 'neon box'
-                        ?
-                        'bg-red-500 text-white' :
-                        'bg-gray-100 text-gray-700'"
-                    class="px-4 py-2 rounded-full transition cursor-pointer">
+                    </button>
 
-                    Neon Box
+                    @foreach ($tagFilters as $tag)
+                        <button @click="category=@js(str($tag)->lower()->value())"
+                            :class="category === @js(str($tag)->lower()->value())
+                            ?
+                            'bg-red-600 text-white shadow-sm' :
+                            'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+                            class="h-8 rounded-lg px-3 text-xs font-semibold transition cursor-pointer sm:h-9 sm:text-sm md:h-10 md:px-4">
 
-                </button>
+                            {{ $tag }}
 
-                <button @click="category='reklame'"
-                    :class="category === 'reklame'
-                        ?
-                        'bg-red-500 text-white' :
-                        'bg-gray-100 text-gray-700'"
-                    class="px-4 py-2 rounded-full transition cursor-pointer">
+                        </button>
+                    @endforeach
 
-                    Reklame
-
-                </button>
+                </div>
 
             </div>
 
@@ -77,10 +94,11 @@
         @if ($articles->count())
             <section class="max-w-7xl mx-auto px-6 mb-20">
 
-                <a href="{{ route('artikel.detail', $articles->first()['slug']) }}"
+                <a href="{{ url('/artikel/' . $articles->first()['slug']) }}"
                     class="grid md:grid-cols-2 bg-white shadow-xl rounded-2xl overflow-hidden">
 
-                    <img src="{{ $articles->first()['image'] ?? asset("/storage/".$articles->first()['image']) }}" class="h-full object-cover">
+                    <img src="{{ $articles->first()['image'] }}" class="h-full min-h-72 object-cover"
+                        alt="{{ $articles->first()['title'] }}">
 
                     <div class="p-10">
 
@@ -102,7 +120,7 @@
 
                         <p class="text-sm text-gray-400 mt-4">
 
-                            ⏱ {{ ceil(str_word_count(strip_tags($articles->first()['content'])) / 200) }} min read
+                            ⏱ {{ $articles->first()['reading_time'] }} min read
 
                         </p>
 
@@ -121,16 +139,13 @@
             <div class="lg:col-span-3 grid md:grid-cols-2 gap-10">
 
                 <template
-                    x-for="article in articles.filter(a =>
-a.title.toLowerCase().includes(search.toLowerCase()) &&
-(category=='all' || a.tags.includes(category))
-)"
+                    x-for="article in filteredArticles()"
                     :key="article.slug">
 
                     <a :href="'/artikel/' + article.slug"
                         class="article-card bg-white rounded-xl shadow-lg overflow-hidden">
 
-                        <img :src=" article.image ?? '/storage/' + article.image" class="w-full h-48 object-cover">
+                        <img :src="article.image" class="w-full h-48 object-cover" :alt="article.title">
 
                         <div class="p-6">
 
@@ -142,7 +157,7 @@ a.title.toLowerCase().includes(search.toLowerCase()) &&
 
                             <div class="flex justify-between text-sm text-gray-400">
 
-                                <span x-text="'⏱ '+Math.ceil(article.content.length/200)+' min read'">
+                                <span x-text="'⏱ ' + article.reading_time + ' min read'">
                                 </span>
 
                                 <span x-text="'👁 '+article.views">
@@ -156,6 +171,10 @@ a.title.toLowerCase().includes(search.toLowerCase()) &&
 
                 </template>
 
+                <div x-show="filteredArticles().length === 0" class="md:col-span-2 rounded-xl border border-gray-200 bg-white p-10 text-center text-gray-500">
+                    Artikel tidak ditemukan.
+                </div>
+
             </div>
 
 
@@ -167,10 +186,11 @@ a.title.toLowerCase().includes(search.toLowerCase()) &&
                     Artikel Populer
                 </h3>
 
-                @foreach ($articles->sortByDesc('views')->take(5) as $article)
-                    <a href="{{ route('artikel.detail', $article['slug']) }}" class="flex gap-4 items-center">
+                @foreach ($popularArticles as $article)
+                    <a href="{{ url('/artikel/' . $article['slug']) }}" class="flex gap-4 items-center">
 
-                        <img src="{{ asset($article['image']) }}" class="w-20 h-16 object-cover rounded">
+                        <img src="{{ $article['image'] }}" class="w-20 h-16 object-cover rounded"
+                            alt="{{ $article['title'] }}">
 
                         <p class="text-sm font-semibold">
 

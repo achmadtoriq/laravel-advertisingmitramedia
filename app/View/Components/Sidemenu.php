@@ -37,6 +37,11 @@ class Sidemenu extends Component
             'icon' => 'fa-solid fa-box',
             'url' => '/admin/projects'
         ],
+        [
+            'name' => 'SEO Pages',
+            'icon' => 'fa-solid fa-magnifying-glass-chart',
+            'url' => '/admin/seo'
+        ],
         // [
         //     'name' => 'Settings',
         //     'icon' => 'fa-solid fa-gear',

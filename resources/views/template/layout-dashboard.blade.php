@@ -17,12 +17,12 @@
 
 </head>
 
-<body class="bg-gray-100">
+<body class="min-h-screen bg-gray-100">
 
-    <div x-data="{ open: true }" class="flex h-screen overflow-hidden">
+    <div x-data="{ open: true }" class="flex min-h-screen">
 
         <!-- SIDEBAR -->
-        <aside :class="open ? 'w-60' : 'w-16'" class="transition-all duration-300 bg-white shadow-xl flex flex-col">
+        <aside :class="open ? 'w-60' : 'w-16'" class="sticky top-0 h-screen transition-all duration-300 bg-white shadow-xl flex flex-col overflow-y-auto">
 
             <!-- LOGO -->
             <div class="h-16 flex items-center justify-center">
@@ -58,10 +58,10 @@
 
 
         <!-- MAIN AREA -->
-        <div class="flex-1 flex flex-col">
+        <div class="min-w-0 flex-1 flex flex-col">
 
             <!-- TOPBAR -->
-            <header class="h-16 bg-white shadow flex items-center justify-between px-6">
+            <header class="sticky top-0 z-20 h-16 bg-white shadow flex items-center justify-between px-6">
 
                 <h1 class="font-semibold text-gray-700">
                     Admin Dashboard
@@ -86,10 +86,13 @@
 
 
             <!-- CONTENT -->
-            <main class="flex-1 overflow-y-auto p-6">
-                <x-breadcrumb></x-breadcrumb>
+            <main class="flex-1 p-6">
+                <div :class="open ? 'left-60' : 'left-16'"
+                    class="fixed top-16 right-0 z-10 border-b border-gray-200 bg-gray-100/95 px-6 py-4 backdrop-blur transition-all duration-300">
+                    <x-breadcrumb></x-breadcrumb>
+                </div>
 
-                <div class="bg-white border border-gray-100 rounded-xl shadow-sm p-6">
+                <div class="mt-14 bg-white border border-gray-100 rounded-xl shadow-sm p-6">
 
                     {{ $slot }}
 
