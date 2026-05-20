@@ -16,7 +16,7 @@
 
             <p class="mb-6 text-white/90 text-lg">
                 Konsultasi gratis untuk desain neon box, papan reklame,
-                dan media promosi bisnis Anda di Surabaya.
+                dan media promosi bisnis Anda di Indonesia.
             </p>
 
             <x-two-button classbg=""></x-two-button>

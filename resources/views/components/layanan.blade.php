@@ -14,7 +14,7 @@
             <p class="text-gray-500 mt-3 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
 
                 Layanan profesional Mitramedia Advertising untuk membantu branding bisnis Anda
-                melalui media reklame berkualitas tinggi di Surabaya.
+                melalui media reklame berkualitas tinggi di Indonesia.
 
             </p>
 

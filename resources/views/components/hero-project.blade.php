@@ -8,7 +8,7 @@
 
         <p class="text-gray-600">
             Dokumentasi berbagai pekerjaan neon box, papan reklame,
-            dan media promosi outdoor yang telah kami kerjakan di Surabaya.
+            dan media promosi outdoor yang telah kami kerjakan di seluruh Indonesia.
         </p>
 
     </div>

@@ -5,7 +5,7 @@
     <div class="absolute inset-0 overflow-hidden">
 
         <img src="{{ asset('assets/images/bg_reklame_siang.png') }}" class="w-full h-full object-cover scale-110"
-            :style="'transform: translateY(' + (y * 0.3) + 'px) scale(1.1)'" alt="Jasa Neon Box Surabaya">
+            :style="'transform: translateY(' + (y * 0.3) + 'px) scale(1.1)'" alt="Jasa Neon Box Indonesia">
 
     </div>
 
@@ -32,7 +32,7 @@
                 class="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
                 Mitramedia Advertising
                 <span class="block text-red-500">
-                    Jasa Neon Box & Reklame Surabaya
+                    Jasa Neon Box & Reklame Indonesia
                 </span>
             </h1>
 
@@ -42,7 +42,7 @@
                 class="mt-6 text-lg text-gray-200 max-w-xl leading-relaxed">
                 Tingkatkan visibilitas bisnis Anda dengan media reklame profesional.
                 Mitramedia Advertising menyediakan layanan desain, produksi,
-                hingga pemasangan neon box, billboard, dan berbagai media branding visual di Surabaya.
+                hingga pemasangan neon box, billboard, dan berbagai media branding visual di Indonesia.
             </p>
 
             <!-- CTA -->

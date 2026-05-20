@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>Tentang Mitramedia Advertising | Jasa Neon Box Surabaya</x-slot:title>
+    <x-slot:title>Tentang Mitramedia Advertising | Jasa Neon Box Indonesia</x-slot:title>
     <x-slot:description>Mitra Media Advertising adalah perusahaan jasa reklame di Surabaya yang menyediakan neon box,
         papan reklame, dan huruf timbul dengan desain profesional dan kualitas terbaik.</x-slot:description>
     <x-slot:keyword>mitramedia advertising, jasa neon box surabaya, jasa reklame surabaya, papan reklame surabaya,
