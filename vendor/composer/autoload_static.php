@@ -632,6 +632,7 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'App\\Http\\Controllers\\Main' => __DIR__ . '/../..' . '/app/Http/Controllers/Main.php',
         'App\\Http\\Controllers\\ProjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProjectController.php',
         'App\\Http\\Controllers\\PublicPageSeoController' => __DIR__ . '/../..' . '/app/Http/Controllers/PublicPageSeoController.php',
+        'App\\Http\\Middleware\\RedirectTrailingSlash' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectTrailingSlash.php',
         'App\\Models\\Article' => __DIR__ . '/../..' . '/app/Models/Article.php',
         'App\\Models\\Project' => __DIR__ . '/../..' . '/app/Models/Project.php',
         'App\\Models\\PublicPageSeo' => __DIR__ . '/../..' . '/app/Models/PublicPageSeo.php',

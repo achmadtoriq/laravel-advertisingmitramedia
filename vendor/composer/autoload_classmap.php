@@ -13,6 +13,7 @@ return array(
     'App\\Http\\Controllers\\Main' => $baseDir . '/app/Http/Controllers/Main.php',
     'App\\Http\\Controllers\\ProjectController' => $baseDir . '/app/Http/Controllers/ProjectController.php',
     'App\\Http\\Controllers\\PublicPageSeoController' => $baseDir . '/app/Http/Controllers/PublicPageSeoController.php',
+    'App\\Http\\Middleware\\RedirectTrailingSlash' => $baseDir . '/app/Http/Middleware/RedirectTrailingSlash.php',
     'App\\Models\\Article' => $baseDir . '/app/Models/Article.php',
     'App\\Models\\Project' => $baseDir . '/app/Models/Project.php',
     'App\\Models\\PublicPageSeo' => $baseDir . '/app/Models/PublicPageSeo.php',
