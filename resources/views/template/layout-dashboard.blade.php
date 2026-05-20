@@ -88,11 +88,11 @@
             <!-- CONTENT -->
             <main class="flex-1 p-6">
                 <div :class="open ? 'left-60' : 'left-16'"
-                    class="fixed top-16 right-0 z-10 border-b border-gray-200 bg-gray-100/95 px-6 py-4 backdrop-blur transition-all duration-300">
+                    class="top-10 z-10 border-b border-gray-200 bg-gray-100 pb-2 backdrop-blur transition-all duration-300">
                     <x-breadcrumb></x-breadcrumb>
                 </div>
 
-                <div class="mt-14 bg-white border border-gray-100 rounded-xl shadow-sm p-6">
+                <div class="mt-5 bg-white border border-gray-100 rounded-xl shadow-sm p-6">
 
                     {{ $slot }}
 

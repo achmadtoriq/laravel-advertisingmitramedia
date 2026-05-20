@@ -11,6 +11,19 @@ class Main extends Controller
 {
     public function show(?string $path = null)
     {
+        $requestPath = parse_url(request()->server('REQUEST_URI', ''), PHP_URL_PATH) ?: '';
+
+        if (
+            in_array(request()->method(), ['GET', 'HEAD'], true)
+            && $requestPath !== '/'
+            && str_ends_with($requestPath, '/')
+        ) {
+            $target = request()->getSchemeAndHttpHost() . rtrim($requestPath, '/');
+            $query = request()->getQueryString();
+
+            return redirect($query ? $target . '?' . $query : $target, 301);
+        }
+
         $path = PublicPageSeo::normalizePath($path ?? '/');
         $page = $this->resolvePublicPage($path);
 

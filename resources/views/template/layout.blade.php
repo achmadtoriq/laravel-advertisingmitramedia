@@ -45,6 +45,8 @@
         $hasDatabaseMeta = (bool) $pageSeo;
         $hasDatabaseOg = $hasDatabaseMeta || ($pageSeo && ($pageSeo->og_title || $pageSeo->og_description || $pageSeo->og_image));
         $hasDatabaseTwitter = $hasDatabaseMeta || ($pageSeo && ($pageSeo->twitter_title || $pageSeo->twitter_description || $pageSeo->twitter_image));
+        $googleTagManagerId = config('services.google.tag_manager_id');
+        $googleAnalyticsMeasurementId = config('services.google.analytics_measurement_id');
     @endphp
 
     {{-- Title --}}
@@ -122,33 +124,54 @@
     <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" rel="stylesheet">
 
 
-    <!-- Google Tag Manager Penting Jangan sampai Hilang -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
+    @if ($googleTagManagerId)
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', @json($googleTagManagerId));
+        </script>
+        <!-- End Google Tag Manager -->
+    @elseif ($googleAnalyticsMeasurementId)
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ $googleAnalyticsMeasurementId }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', @json($googleAnalyticsMeasurementId), {
+                page_path: @json(request()->getPathInfo()),
+                page_title: @json($seoTitle)
             });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KF54DZ2G');
-    </script>
-    <!-- End Google Tag Manager -->
+        </script>
+        <!-- End Google Analytics -->
+    @endif
 
 </head>
 
 <body class="">
 
-    <!-- Google Tag Manager (noscript) Penting Jangan sampai Hilang -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF54DZ2G" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    @if ($googleTagManagerId)
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $googleTagManagerId }}" height="0"
+                width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    @endif
 
     @php
         $isHome = request()->is('/');

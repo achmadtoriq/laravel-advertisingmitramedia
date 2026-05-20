@@ -66,6 +66,38 @@
         </div>
     </div>
 
+    <div class="mb-6 rounded-lg border border-gray-100 bg-white p-6 shadow-sm">
+        <div class="mb-5 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+            <div>
+                <h2 class="text-lg font-semibold text-gray-800">SEO Issues</h2>
+                <p class="text-sm text-gray-500">Checklist cepat dari meta SEO halaman publik dan artikel.</p>
+            </div>
+        </div>
+
+        @if (count($seoIssues))
+            <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+                @foreach ($seoIssues as $issue)
+                    <a href="{{ $issue['url'] }}" class="flex items-center justify-between rounded-lg border border-gray-100 bg-gray-50 px-4 py-3 hover:border-red-200 hover:bg-red-50">
+                        <div>
+                            <p class="text-sm font-medium text-gray-800">{{ $issue['label'] }}</p>
+                            <p class="mt-1 text-xs text-gray-500">Klik untuk perbaiki</p>
+                        </div>
+                        <span class="rounded-full px-3 py-1 text-sm font-semibold
+                            {{ $issue['count'] > 0 && $issue['level'] === 'danger' ? 'bg-red-100 text-red-700' : '' }}
+                            {{ $issue['count'] > 0 && $issue['level'] === 'warning' ? 'bg-yellow-100 text-yellow-700' : '' }}
+                            {{ $issue['count'] === 0 ? 'bg-green-100 text-green-700' : '' }}">
+                            {{ number_format($issue['count']) }}
+                        </span>
+                    </a>
+                @endforeach
+            </div>
+        @else
+            <div class="rounded-lg border border-dashed border-gray-200 bg-gray-50 px-4 py-6 text-center text-sm text-gray-500">
+                Data SEO lokal belum tersedia.
+            </div>
+        @endif
+    </div>
+
     <div class="rounded-lg border border-gray-100 bg-white p-6 shadow-sm">
         <div class="mb-5 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
             <div>
@@ -131,8 +163,53 @@
     <div class="mt-6 rounded-lg border border-gray-100 bg-white p-6 shadow-sm">
         <div class="mb-5 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
             <div>
+                <h2 class="text-lg font-semibold text-gray-800">Landing Page dari Google Search</h2>
+                <p class="text-sm text-gray-500">Halaman yang paling sering mendapat klik dan impression dari Google Search Console.</p>
+            </div>
+        </div>
+
+        @if (count($searchLandingPages))
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 text-sm">
+                    <thead>
+                        <tr class="text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                            <th class="px-3 py-3">Halaman</th>
+                            <th class="px-3 py-3 text-right">Clicks</th>
+                            <th class="px-3 py-3 text-right">Impressions</th>
+                            <th class="px-3 py-3 text-right">CTR</th>
+                            <th class="px-3 py-3 text-right">Posisi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        @foreach ($searchLandingPages as $page)
+                            <tr class="text-gray-700">
+                                <td class="max-w-xl px-3 py-3">
+                                    <a href="{{ $page['page'] }}" target="_blank" class="font-medium text-gray-900 hover:text-red-600">
+                                        {{ parse_url($page['page'], PHP_URL_PATH) ?: $page['page'] }}
+                                    </a>
+                                    <p class="mt-1 truncate text-xs text-gray-500">{{ $page['page'] }}</p>
+                                </td>
+                                <td class="px-3 py-3 text-right">{{ number_format($page['clicks']) }}</td>
+                                <td class="px-3 py-3 text-right">{{ number_format($page['impressions']) }}</td>
+                                <td class="px-3 py-3 text-right">{{ number_format($page['ctr'] * 100, 2) }}%</td>
+                                <td class="px-3 py-3 text-right">{{ number_format($page['position'], 1) }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @else
+            <div class="flex min-h-40 items-center justify-center rounded-lg border border-dashed border-gray-200 bg-gray-50 text-sm text-gray-500">
+                Data landing page Google Search belum tersedia.
+            </div>
+        @endif
+    </div>
+
+    <div class="mt-6 rounded-lg border border-gray-100 bg-white p-6 shadow-sm">
+        <div class="mb-5 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+            <div>
                 <h2 class="text-lg font-semibold text-gray-800">Query Penelusuran Google</h2>
-                <p class="text-sm text-gray-500">Top query organik dari Google Search Console, periode 28 hari terakhir.</p>
+                <p class="text-sm text-gray-500">Top query organik dari Google Search Console, semua data yang tersedia.</p>
             </div>
         </div>
 

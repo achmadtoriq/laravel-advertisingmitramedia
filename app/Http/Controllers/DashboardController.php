@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\PublicPageSeo;
 use App\Services\GoogleAnalyticsService;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Schema;
 
 class DashboardController extends Controller
 {
@@ -15,6 +18,8 @@ class DashboardController extends Controller
         $yesterday = (int) $ga->getYesterdayVisitors();
         $topContent = $ga->getTopContent();
         $searchQueries = $ga->getSearchQueries();
+        $searchLandingPages = $ga->getSearchLandingPages();
+        $seoIssues = $this->seoIssues();
 
         $labels = collect($chart)->map(function ($item) {
             return Carbon::createFromFormat('Ymd', $item['date'])->format('d M');
@@ -28,6 +33,8 @@ class DashboardController extends Controller
             'gaMessages' => $ga->statusMessages(),
             'searchConsoleMessages' => $ga->searchConsoleStatusMessages(),
             'searchQueries' => $searchQueries,
+            'searchLandingPages' => $searchLandingPages,
+            'seoIssues' => $seoIssues,
             'topContent' => $topContent,
             'realtime' => $realtime,
             'today' => $today,
@@ -47,5 +54,50 @@ class DashboardController extends Controller
     public function setting_menu()
     {
         return view('admin.setting-menu');
+    }
+
+    private function seoIssues(): array
+    {
+        $issues = [];
+
+        if (Schema::hasTable('public_page_seos')) {
+            $activePages = PublicPageSeo::query()->where('is_active', true);
+
+            $issues[] = [
+                'label' => 'Halaman aktif tanpa meta title',
+                'count' => (clone $activePages)->where(fn ($query) => $query->whereNull('meta_title')->orWhere('meta_title', ''))->count(),
+                'level' => 'danger',
+                'url' => '/admin/seo',
+            ];
+            $issues[] = [
+                'label' => 'Halaman aktif tanpa meta description',
+                'count' => (clone $activePages)->where(fn ($query) => $query->whereNull('meta_description')->orWhere('meta_description', ''))->count(),
+                'level' => 'danger',
+                'url' => '/admin/seo',
+            ];
+            $issues[] = [
+                'label' => 'Halaman aktif dengan robots noindex',
+                'count' => (clone $activePages)->where('robots', 'like', '%noindex%')->count(),
+                'level' => 'warning',
+                'url' => '/admin/seo',
+            ];
+        }
+
+        if (Schema::hasTable('articles_data')) {
+            $issues[] = [
+                'label' => 'Artikel tanpa SEO title',
+                'count' => Article::query()->where(fn ($query) => $query->whereNull('seo_title')->orWhere('seo_title', ''))->count(),
+                'level' => 'warning',
+                'url' => '/admin/article',
+            ];
+            $issues[] = [
+                'label' => 'Artikel tanpa SEO description',
+                'count' => Article::query()->where(fn ($query) => $query->whereNull('seo_description')->orWhere('seo_description', ''))->count(),
+                'level' => 'warning',
+                'url' => '/admin/article',
+            ];
+        }
+
+        return $issues;
     }
 }

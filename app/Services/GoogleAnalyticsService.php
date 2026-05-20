@@ -158,7 +158,7 @@ class GoogleAnalyticsService
         });
     }
 
-    public function getSearchQueries(int $days = 28, int $limit = 10): array
+    public function getSearchQueries(int $days = 480, int $limit = 10): array
     {
         if (! $this->canConnectToSearchConsole()) {
             return [];
@@ -197,6 +197,60 @@ class GoogleAnalyticsService
                 return collect($response->json('rows', []))
                     ->map(fn ($row) => [
                         'query' => data_get($row, 'keys.0', '-'),
+                        'clicks' => (int) data_get($row, 'clicks', 0),
+                        'impressions' => (int) data_get($row, 'impressions', 0),
+                        'ctr' => (float) data_get($row, 'ctr', 0),
+                        'position' => (float) data_get($row, 'position', 0),
+                    ])
+                    ->values()
+                    ->all();
+            } catch (Throwable $e) {
+                $this->searchConsoleMessages[] = 'Google Search Console API gagal: ' . $e->getMessage();
+
+                return [];
+            }
+        });
+    }
+
+    public function getSearchLandingPages(int $days = 480, int $limit = 10): array
+    {
+        if (! $this->canConnectToSearchConsole()) {
+            return [];
+        }
+
+        return Cache::remember("gsc_landing_pages_{$days}_{$limit}", 3600, function () use ($days, $limit) {
+            $endDate = now()->subDays(2);
+            $startDate = $endDate->copy()->subDays($days - 1);
+            $siteUrl = rawurlencode(env('GSC_SITE_URL'));
+
+            try {
+                $token = $this->accessToken('https://www.googleapis.com/auth/webmasters.readonly', 'search-console');
+
+                if (! $token) {
+                    return [];
+                }
+
+                $response = Http::withToken($token)
+                    ->acceptJson()
+                    ->timeout(10)
+                    ->post("https://searchconsole.googleapis.com/webmasters/v3/sites/{$siteUrl}/searchAnalytics/query", [
+                        'startDate' => $startDate->toDateString(),
+                        'endDate' => $endDate->toDateString(),
+                        'dimensions' => ['page'],
+                        'rowLimit' => $limit,
+                        'startRow' => 0,
+                    ]);
+
+                if ($response->failed()) {
+                    $message = data_get($response->json(), 'error.message', $response->body());
+                    $this->searchConsoleMessages[] = 'Google Search Console API gagal: ' . str($message)->limit(180);
+
+                    return [];
+                }
+
+                return collect($response->json('rows', []))
+                    ->map(fn ($row) => [
+                        'page' => data_get($row, 'keys.0', '-'),
                         'clicks' => (int) data_get($row, 'clicks', 0),
                         'impressions' => (int) data_get($row, 'impressions', 0),
                         'ctr' => (float) data_get($row, 'ctr', 0),
