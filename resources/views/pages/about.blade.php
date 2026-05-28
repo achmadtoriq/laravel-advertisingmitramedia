@@ -184,8 +184,10 @@
         e.preventDefault();
 
         if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            window.trackConversion('phone');
             window.location.href = "tel:+628123456789";
         } else {
+            window.trackConversion('whatsapp');
             window.location.href = "https://wa.me/628123456789";
         }
     }

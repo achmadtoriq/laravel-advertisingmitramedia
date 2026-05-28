@@ -4,6 +4,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @php
         $defaultTitle = 'Jasa Neon Box Surabaya | Mitramedia Advertising';
@@ -249,7 +250,7 @@
                 </a>
 
                 <a href="https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F"
-                    target="_blank" class="px-4 py-2 rounded-full bg-red-600 text-white">
+                    target="_blank" data-conversion-event="whatsapp" class="px-4 py-2 rounded-full bg-red-600 text-white">
                     HUBUNGI KAMI
                 </a>
 
@@ -299,7 +300,7 @@
                 </a>
 
                 <a href="https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F"
-                    target="_blank" class="bg-red-600 text-white px-4 py-2 rounded-full text-center">
+                    target="_blank" data-conversion-event="whatsapp" class="bg-red-600 text-white px-4 py-2 rounded-full text-center">
                     HUBUNGI KAMI
                 </a>
 
@@ -438,7 +439,7 @@
 
         <!-- Button -->
         <a href="https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F"
-            target="_blank"
+            target="_blank" data-conversion-event="whatsapp"
             class="relative flex items-center justify-center w-16 h-16 rounded-full bg-green-500 text-white shadow-2xl hover:scale-110 transition">
 
             <span class="absolute w-full h-full rounded-full bg-green-400 opacity-30 animate-ping"></span>
@@ -450,6 +451,36 @@
     </div>
 
     <x-visitor></x-visitor>
+
+    <script>
+        window.trackConversion = function(eventType) {
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            const data = new FormData();
+
+            data.append('_token', token);
+            data.append('event_type', eventType);
+            data.append('source_url', window.location.pathname);
+
+            if (navigator.sendBeacon) {
+                navigator.sendBeacon(@json(route('conversion-events.store')), data);
+                return;
+            }
+
+            fetch(@json(route('conversion-events.store')), {
+                method: 'POST',
+                body: data,
+                keepalive: true
+            });
+        };
+
+        document.addEventListener('click', function(event) {
+            const contactLink = event.target.closest('[data-conversion-event]');
+
+            if (contactLink) {
+                window.trackConversion(contactLink.dataset.conversionEvent);
+            }
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
 </body>

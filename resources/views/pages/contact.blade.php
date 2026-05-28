@@ -61,7 +61,7 @@
                         </h3>
 
                         <a href="https://api.whatsapp.com/send?phone=6282213280698&amp;text=Halo%2C%20saya%20tertarik%20dengan%20penawaran%20di%20website%20Anda.%20Bisa%20berikan%20detail%20lebih%20lanjut%3F"
-                            class="relative inline-flex items-center gap-2 bg-green-500 text-white px-7 py-3 rounded-full font-semibold shadow hover:scale-105 transition" target="_blank">
+                            class="relative inline-flex items-center gap-2 bg-green-500 text-white px-7 py-3 rounded-full font-semibold shadow hover:scale-105 transition" target="_blank" data-conversion-event="whatsapp">
 
                             <span
                                 class="absolute animate-ping w-full h-full rounded-full bg-green-400 opacity-30"></span>

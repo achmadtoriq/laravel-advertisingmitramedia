@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ConversionEvent;
 use App\Models\PublicPageSeo;
 use App\Services\GoogleAnalyticsService;
 use Carbon\Carbon;
@@ -20,6 +21,7 @@ class DashboardController extends Controller
         $searchQueries = $ga->getSearchQueries();
         $searchLandingPages = $ga->getSearchLandingPages();
         $seoIssues = $this->seoIssues();
+        $conversions = $this->conversions();
 
         $labels = collect($chart)->map(function ($item) {
             return Carbon::createFromFormat('Ymd', $item['date'])->format('d M');
@@ -35,6 +37,7 @@ class DashboardController extends Controller
             'searchQueries' => $searchQueries,
             'searchLandingPages' => $searchLandingPages,
             'seoIssues' => $seoIssues,
+            'conversions' => $conversions,
             'topContent' => $topContent,
             'realtime' => $realtime,
             'today' => $today,
@@ -99,5 +102,22 @@ class DashboardController extends Controller
         }
 
         return $issues;
+    }
+
+    private function conversions(): array
+    {
+        $from = now()->subDays(27)->startOfDay();
+
+        return [
+            'whatsapp' => Schema::hasTable('conversion_events')
+                ? ConversionEvent::query()->where('event_type', 'whatsapp')->where('created_at', '>=', $from)->count()
+                : 0,
+            'phone' => Schema::hasTable('conversion_events')
+                ? ConversionEvent::query()->where('event_type', 'phone')->where('created_at', '>=', $from)->count()
+                : 0,
+            'article_views' => Schema::hasTable('articles_data')
+                ? (int) Article::query()->sum('views')
+                : 0,
+        ];
     }
 }

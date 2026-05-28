@@ -24,6 +24,7 @@
                     <th class="px-4 py-3 text-left">No</th>
                     <th class="px-4 py-3 text-left">Judul</th>
                     <th class="px-4 py-3 text-left">Slug</th>
+                    <th class="px-4 py-3 text-right">Views</th>
                     <th class="px-4 py-3 text-left">Tanggal</th>
                     <th class="px-4 py-3 text-right">Action</th>
 
@@ -47,6 +48,10 @@
 
                         <td class="px-4 py-3 text-gray-500">
                             {{ $article->slug }}
+                        </td>
+
+                        <td class="px-4 py-3 text-right text-gray-500">
+                            {{ number_format($article->views) }}
                         </td>
 
                         <td class="px-4 py-3 text-gray-500">

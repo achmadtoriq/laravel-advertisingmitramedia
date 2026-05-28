@@ -67,6 +67,33 @@
     </div>
 
     <div class="mb-6 rounded-lg border border-gray-100 bg-white p-6 shadow-sm">
+        <div class="mb-5">
+            <h2 class="text-lg font-semibold text-gray-800">Konversi & Artikel</h2>
+            <p class="text-sm text-gray-500">Klik kontak tercatat untuk 28 hari terakhir. View artikel merupakan total sepanjang waktu.</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div class="rounded-lg border border-green-100 bg-green-50 p-5">
+                <p class="text-sm font-medium text-green-700">Klik WhatsApp</p>
+                <h3 class="mt-3 text-3xl font-bold text-gray-900">{{ number_format($conversions['whatsapp']) }}</h3>
+                <p class="mt-1 text-xs text-gray-500">28 hari terakhir</p>
+            </div>
+
+            <div class="rounded-lg border border-blue-100 bg-blue-50 p-5">
+                <p class="text-sm font-medium text-blue-700">Klik Telepon</p>
+                <h3 class="mt-3 text-3xl font-bold text-gray-900">{{ number_format($conversions['phone']) }}</h3>
+                <p class="mt-1 text-xs text-gray-500">28 hari terakhir</p>
+            </div>
+
+            <div class="rounded-lg border border-orange-100 bg-orange-50 p-5">
+                <p class="text-sm font-medium text-orange-700">View Artikel</p>
+                <h3 class="mt-3 text-3xl font-bold text-gray-900">{{ number_format($conversions['article_views']) }}</h3>
+                <p class="mt-1 text-xs text-gray-500">Total seluruh artikel</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-6 rounded-lg border border-gray-100 bg-white p-6 shadow-sm">
         <div class="mb-5 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
             <div>
                 <h2 class="text-lg font-semibold text-gray-800">SEO Issues</h2>
