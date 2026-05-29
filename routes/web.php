@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ConversionEventController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Main;
@@ -21,6 +22,10 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::post('/conversion-events', [ConversionEventController::class, 'store'])
     ->middleware('throttle:60,1')
     ->name('conversion-events.store');
+Route::post('/contact-us', [ContactController::class, 'send'])
+    ->middleware('throttle:5,1')
+    ->name('contact.send');
+    
 Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index']);
