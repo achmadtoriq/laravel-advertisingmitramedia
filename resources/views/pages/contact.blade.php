@@ -27,7 +27,7 @@
         <div class="absolute -top-32 -left-32 w-[400px] h-[400px] bg-red-500/10 blur-[120px] rounded-full"></div>
         <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-orange-400/10 blur-[120px] rounded-full"></div>
 
-        <div class="max-w-7xl mx-auto py-24 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
 
             <!-- Title -->
             <div class="text-center mb-16" data-aos="fade-up">
